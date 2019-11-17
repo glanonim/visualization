@@ -16,7 +16,7 @@
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
 
-Libraries
-Parsing CSV to JSON: https://www.papaparse.com/docs
-Displaying bar chart: https://www.chartjs.org/docs/latest/getting-started/usage.html
-Map chart: https://www.amcharts.com/demos/#maps
+# Libraries
+1. Parsing CSV to JSON: https://www.papaparse.com/docs
+2. Displaying bar chart: https://www.chartjs.org/docs/latest/getting-started/usage.html
+3. Map chart: https://www.amcharts.com/demos/#maps
