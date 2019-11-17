@@ -18,4 +18,7 @@
 
 # Libraries
 1. Parsing CSV to JSON: https://www.papaparse.com/docs 
-2. Charts: https://www.amcharts.com/demos/#maps
+2. Charts: https://www.amcharts.com/docs/v4/chart-types/xy-chart/
+  - Map: https://www.amcharts.com/demos/drill-down-to-countries/
+  - Funnel: https://www.amcharts.com/demos/funnel-chart/
+  
