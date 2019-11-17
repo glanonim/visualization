@@ -15,3 +15,8 @@
 12. Project Schedule. Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members. Write your schedule in terms of weekly deadlines.
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
+
+Libraries
+Parsing CSV to JSON: https://www.papaparse.com/docs
+Displaying bar chart: https://www.chartjs.org/docs/latest/getting-started/usage.html
+Map chart: https://www.amcharts.com/demos/#maps
