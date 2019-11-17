@@ -27,3 +27,7 @@
   - Map: https://www.amcharts.com/demos/drill-down-to-countries/
   - Funnel: https://www.amcharts.com/demos/funnel-chart/
   
+# Data sources
+1. 2019/W22: CO2 Emissions per capita: https://data.world/makeovermonday/2019w22
+2. Population: https://data.world/oecd/population/workspace/file?filename=population.csv
+3. Countries area: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2
