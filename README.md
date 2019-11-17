@@ -1,7 +1,12 @@
 # Visualization
 
 1. Basic Info. The project title, your names, e-mail addresses, student number, a link to the project URL (this link should provide all files of your project).
-
+- Project URL: http://glanonim.com/Archive/visualization/
+- Project Git: https://github.com/glanonim/visualization/
+- Title: Visualization of CO2 emission per country within recent decades
+- Creators:
+  - Franziska Schmidt, franziska_paula.schmidt@smail.fh-koeln.de, student number: 
+  - Krzysztof Dabrowski, krzysztof_jedrzej.dabrowski@smail.th-koeln.de, student number: 11137957
 
 2. Background and Motivation. Discuss your motivations and reasons for choosing this project, especially any background or research interests that may have influenced your decision.
 3. Related Work. Anything that inspired you, such as a paper, a web site, visualisations we discussed in class, etc.
@@ -15,3 +20,14 @@
 12. Project Schedule. Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members. Write your schedule in terms of weekly deadlines.
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
+
+# Libraries
+1. Parsing CSV to JSON: https://www.papaparse.com/docs 
+2. Charts: https://www.amcharts.com/docs/v4/chart-types/xy-chart/
+  - Map: https://www.amcharts.com/demos/drill-down-to-countries/
+  - Funnel: https://www.amcharts.com/demos/funnel-chart/
+  
+# Data sources
+1. 2019/W22: CO2 Emissions per capita: https://data.world/makeovermonday/2019w22
+2. Population: https://data.world/oecd/population/workspace/file?filename=population.csv
+3. Countries area: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2
