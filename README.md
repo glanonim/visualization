@@ -1,10 +1,10 @@
 # Visualization
 
 1. Basic Info. The project title, your names, e-mail addresses, student number, a link to the project URL (this link should provide all files of your project).
-Project URL: http://glanonim.com/Archive/visualization/
-Project Git: https://github.com/glanonim/visualization/
-Title: Visualization of CO2 emission per country within recent decades
-Creators:
+- Project URL: http://glanonim.com/Archive/visualization/
+- Project Git: https://github.com/glanonim/visualization/
+- Title: Visualization of CO2 emission per country within recent decades
+- Creators:
   - Franziska Schmidt, franziska_paula.schmidt@smail.fh-koeln.de, student number: 
   - Krzysztof Dabrowski, krzysztof_jedrzej.dabrowski@smail.th-koeln.de, student number: 11137957
 
