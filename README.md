@@ -5,7 +5,7 @@
 - Project Git: https://github.com/glanonim/visualization/
 - Title: Visualization of CO2 emission per country within recent decades
 - Creators:
-  - Franziska Schmidt, franziska_paula.schmidt@smail.fh-koeln.de, student number: 
+  - Franziska Schmidt, franziska_paula.schmidt@smail.fh-koeln.de, student number: 11084555
   - Krzysztof Dabrowski, krzysztof_jedrzej.dabrowski@smail.th-koeln.de, student number: 11137957
 
 2. Background and Motivation. Discuss your motivations and reasons for choosing this project, especially any background or research interests that may have influenced your decision.
