@@ -9,6 +9,11 @@
   - Krzysztof Dabrowski, krzysztof_jedrzej.dabrowski@smail.th-koeln.de, student number: 11137957
 
 2. Background and Motivation. Discuss your motivations and reasons for choosing this project, especially any background or research interests that may have influenced your decision.
+
+The motivation of this project is the current discussion about global warming. Currently we develope an app to improve the environmental behaivoir of people. It is important in order to change something to know the reasons for the climate change. One reason is the co2 pollution. To understand the co2 pollution one has to consider the emerge during the years. Furthermore the distribution of co2 emission in the world will give interesting insights about the activities of the individual countries. 
+
+
+
 3. Related Work. Anything that inspired you, such as a paper, a web site, visualisations we discussed in class, etc.
 4. Project Objectives and Goals. Provide the primary questions you are trying to answer with your visualisation. What would you like to learn and accomplish? List the benefits.
 5. Data. From where and how are you collecting your data? If appropriate, provide a link to your data sources.
