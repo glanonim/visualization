@@ -27,6 +27,9 @@ The motivation of this project is the current discussion about global warming. C
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
 
+# Ideas
+1. (who added?)
+
 # Libraries
 1. Parsing CSV to JSON: https://www.papaparse.com/docs 
 2. Charts: https://www.amcharts.com/docs/v4/chart-types/xy-chart/
