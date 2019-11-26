@@ -19,6 +19,16 @@
       width: 100%;
       height: 500px;
     }
+
+    #countriesSelect {
+      z-index: 1050;
+      height: 500px;
+    }
+
+    #countriesSelect ul li {
+      cursor: pointer;
+
+    }
   </style>
 
 </head>
@@ -28,40 +38,26 @@
   <main role="main" class="flex-shrink-0">
     <div class="container">
       <h1 class="mt-5">CO<sub>2</sub> emission visualization</h1>
-      <p class="lead">Play with data and display style to see how CO<sub>2</sub> emission progressed over recent years
+      <p class="lead">Play with year and display style to see how CO<sub>2</sub> emission progressed over recent years.
+        Select country to see more details
       </p>
       <div class="row">
-        <div class="col-12 col-md-6 pt-1">
+        <div class="col-12 pt-1">
           <div class="row">
-            <div class="col">
+            <div class="col-12 col-md-4 col-lg-4 offset-lg-2 col-xl-3 offset-xl-5">
               <p class="mb-1 text-right">Display CO<sub>2</sub> emission per: </p>
             </div>
-            <div class="col">
-              <div class="btn-group-vertical btn-group-sm" role="group" aria-label="Data display">
-                <button type="button" class="btn btn-primary text-left">citizen of a country</button>
-                <button type="button" class="btn btn-primary text-left">km<sup>2</sup> of country area</button>
-                <button type="button" class="btn btn-primary text-left">country</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col pt-1">
-          <div class="row">
-            <div class="col">
-              <p class="mb-1 text-right ">Display type: </p>
-            </div>
-            <div class="col">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary active" title="Display globe visualization"><i
-                    class="material-icons pt-1">language</i></button>
-                <button type="button" class="btn btn-primary " title="Display bar chart visualization"><i
-                    class="material-icons pt-1">equalizer</i></button>
+            <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+              <div class="btn-group btn-group-sm btn-block" role="group" aria-label="Data display">
+                <button type="button" class="btn btn-primary">citizen of a country</button>
+                <button type="button" class="btn btn-primary">km<sup>2</sup> of country area</button>
+                <button type="button" class="btn btn-primary">country</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row mt-1">
+      <div class="row mt-2">
         <div class="col pt-2">
           <div class="row">
             <div class="col text-right">
@@ -73,7 +69,7 @@
           </div>
         </div>
         <div class="col-1">
-          <button type="button" class="btn btn-sm btn-primary" title="Animation changes over years"><i
+          <button type="button" class="btn btn-sm btn-primary" title="Play animation over years"><i
               class="material-icons pt-1">play_arrow</i></button>
 
         </div>
@@ -81,18 +77,120 @@
     </div>
   </main>
 
-  <div class="container-fluid border-top mt-3 px-0 ">
-      <div class="chart d-none" id="barChart">
+  <div class="container-fluid border-top border-bottom mt-3 px-0 ">
+    <div class="col-10 col-md-5 col-xl-3 bg-light position-absolute" id="countriesSelect">
+      <div class="row my-3">
+        <div class="col">
+          <h3 class="">Select country</h3>
+        </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-sm btn-primary" title="Hide this panel"><i
+              class="material-icons pt-1">keyboard_arrow_left</i></button>
+
+        </div>
       </div>
-      <div class="chart" id="globeChart">
+      <div class="row">
+          <div class="col">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action active">Germany</li>
+        <li class="list-group-item list-group-item-action active">United Kingdom</li>
+        <li class="list-group-item list-group-item-action">Spain</li>
+        <li class="list-group-item list-group-item-action">Russia</li>
+        <li class="list-group-item list-group-item-action">France</li>
+      </ul>
+    </div>
+    </div>
+    </div>
+    <div class="chart d-none" id="barChart">
+    </div>
+    <div class="chart" id="globeChart">
+    </div>
+  </div>
+  <div class="container py-3">
+    <div class="row my-3">
+      <div class="col-12 col-md-8">
+        <h2>More details</h2>
+        <p class="lead">Select countries to display details by clicking on map or from panel located on left side of the map. Click button above list of countries in the side panel to hide the left panel</p>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="row my-3">
+          <div class="col text-right">
+            <label for="">Sort by:</label>
+          </div>
+          <div class="col">
+            <div class="btn-group-vertical btn-group-sm btn-block" role="group" aria-label="Sort options">
+              <button type="button" class="btn btn-primary active">selection</button>
+              <button type="button" class="btn btn-primary">CO<sub>2</sub> genertion</button>
+              <button type="button" class="btn btn-primary">citizen</button>
+              <button type="button" class="btn btn-primary">area</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="row ">
+      <div class="col my-3">
+        <h4 class="mb-3">Germany</h4>
+        <div class="row">
+          <div class="col-12 col-md-3">
+            <p>Amount of cars per 1000 citizens</p>
+          </div>
+          <div class="col-12 col-md-9">
+            <div class="progress mt-1">
+              <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0"
+                aria-valuemax="100">765</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-3">
+            <p>Kilogram of generated CO<sub>2</sub> per car</p>
+          </div>
+          <div class="col-12 col-md-9">
+            <div class="progress mt-1">
+              <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0"
+                aria-valuemax="100">1254</div>
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col my-3">
+            <h4 class="mb-3">United Kingdom</h4>
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <p>Amount of cars per 1000 citizens</p>
+              </div>
+              <div class="col-12 col-md-9">
+                <div class="progress mt-1">
+                  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                    aria-valuemax="100">812</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <p>Kilogram of generated CO<sub>2</sub> per car</p>
+              </div>
+              <div class="col-12 col-md-9">
+                <div class="progress mt-1">
+                  <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                    aria-valuemax="100">1532</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <footer class="footer mt-auto py-3 border-top bg-light">
     <div class="container">
-      <div class="text-muted">&copy; 2019 by Franziska Schmidt and Krzysztof Dabrowski for TH Köln</div>
+      <div class="text-muted">&copy; 2019 by Kyung Hee Lee,Franziska Schmidt and Krzysztof Dabrowski for TH Köln</div>
       <div class="text-muted">Data sourced from <a href="https://data.world/makeovermonday/2019w22">evamurray</a>, <a
-          href="https://data.world/oecd/population/">OECD</a> via data.world and <a href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2">WorldBank</a></div>
+          href="https://data.world/oecd/population/">OECD</a> via data.world and <a
+          href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2">WorldBank</a></div>
     </div>
   </footer>
 </body>
@@ -1691,7 +1789,7 @@ chartBar.legend.margin(5,5,20,5);
     worldPolygon.propertyFields.fill = "color";
 
     var hs = worldPolygon.states.create("hover");
-    hs.properties.fill = chartMap.colors.getIndex(9);
+    hs.properties.fill = chartMap.colors.getIndex(1);
 
 
     // Create country specific series (but hide it for now)
@@ -1710,7 +1808,7 @@ chartBar.legend.margin(5,5,20,5);
     countryPolygon.fill = am4core.color("#eee");
 
     var hs = countryPolygon.states.create("hover");
-    hs.properties.fill = chart.colors.getIndex(9);
+    hs.properties.fill = chart.colors.getIndex(1);
 
     // Set up click events
     worldPolygon.events.on("hit", function (ev) {
@@ -1759,6 +1857,6 @@ chartBar.legend.margin(5,5,20,5);
 
   }); // end am4core.ready() 
 </script>
- 
+
 
 </html>
