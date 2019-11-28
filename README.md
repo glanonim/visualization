@@ -27,8 +27,15 @@ The motivation of this project is the current discussion about global warming. C
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
 
-# Ideas
-1. (who added?)
+# Detailed displays
+1. Area of the country in this year
+2. Number of citizens in this year and country
+3. Generated CO2 amount in this year and country
+Transportation:
+4. Amount of passengers in this year and country
+5. Amount of air travel per citizen
+Forestation
+6. Area of forests in this year and country
 
 # Libraries
 1. Parsing CSV to JSON: https://www.papaparse.com/docs 
