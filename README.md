@@ -40,3 +40,5 @@ The motivation of this project is the current discussion about global warming. C
 1. 2019/W22: CO2 Emissions per capita: https://data.world/makeovermonday/2019w22
 2. Population: https://data.world/oecd/population/workspace/file?filename=population.csv
 3. Countries area: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2
+4. Forest area per country: https://data.worldbank.org/indicator/AG.LND.FRST.ZS
+5. Air passengers per year: https://data.worldbank.org/indicator/IS.AIR.PSGR
