@@ -33,10 +33,12 @@ The motivation of this project is the current discussion about global warming. C
 3. Generated CO2 amount in this year and country
 
 Transportation:
+
 4. Amount of passengers in this year and country
 5. Amount of air travel per citizen
 
-Forestation
+Forestation:
+
 6. Area of forests in this year and country
 
 # Libraries
