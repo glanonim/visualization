@@ -41,6 +41,15 @@ Forestation:
 
 6. Area of forests in this year and country
 
+# Milestones
+1. Close mock-up - Kris, All - this week, 08.12.2019
+2. Clean and close data - Kaylee - this week, 10.12.2019
+3. Make the magic - 22.12.2019
+4. Validation and hapiness check - All - January
+5. GitHub draft - Franziska - January
+6. Overleaf document - Franziska - January
+7. Poster - for now All - January
+
 # Libraries
 1. Parsing CSV to JSON: https://www.papaparse.com/docs 
 2. Charts: https://www.amcharts.com/docs/v4/chart-types/xy-chart/
