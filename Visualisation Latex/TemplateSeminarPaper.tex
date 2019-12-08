@@ -1,0 +1,89 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+% package for including graphics with figure-environment
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage[official]{eurosym}
+\usepackage[final]{pdfpages}
+\usepackage{listings}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+%\usepgfplotslibrary{external}
+%\tikzexternalize
+
+
+% colors for hyperlinks
+% colored borders (false) colored text (true)
+\hypersetup{colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+
+\lstset{frame=tb,
+  language=Java,
+  breaklines=true,
+  showstringspaces=false,
+  columns=flexible,
+  numbers=none,
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  tabsize=3
+}
+
+% package for bibliography
+\usepackage[authoryear,round]{natbib}
+% package for header
+\usepackage[automark]{scrpage2}
+\pagestyle{scrheadings} 
+\ohead[]{\today}
+\cfoot[]{\pagemark} 
+\setheadsepline[122mm]{0.3mm}
+\begin{document}
+	\title{
+	\begin{figure}[!ht]
+		% \flushleft
+			\includegraphics[width=0.26\textwidth]{THlogoheader.pdf}
+	\end{figure}
+	\vspace{1cm}
+	\Huge Web Architecture private Portfolio
+	}
+	
+	\vspace{1cm}
+	
+	% if you are the only author, you might use the following
+	% \author{Name of student}	
+	% Insert here your name and correct mail address
+	\author{\Large \href{}{Franziska Schmidt} \and \Large  \href{}{Kyung Hee Lee} \and \Large  \href{mailto:krzysztof_jedrzej.dabrowski@smail.th-koeln.de}{Krzysztof Dabrowski} \and \Large  
+	\vspace{1cm}}
+	
+	% name of the course and module
+	\date{
+	\large Module: Fundamentals I \\ Course: Visualisation \\ 
+	\vspace{0.8cm}
+	\large Lecturer: Prof. Dr. Martin Eisemann \\
+	\vspace{1cm}
+	\today
+	}
+
+	\maketitle
+	\setlength{\parindent}{0pt}
+
+\vspace{2cm} 
+	\newpage
+	
+\section{Motivation and Background of the visualisation} % (fold)
+The motivation of this project is the current discussion about global warming. Currently we develop an app to improve the environmental behavior of people. It is important in order to change something to know the reasons for the climate change. One reason is the co2 pollution. To understand the co2 pollution one has to consider the emerge during the years. Furthermore the distribution of co2 emission in the world will give interesting insights about the activities of the individual countries.
+
+
+\section{Related Work}
+\section{Project Objectives and Goals}
+\section{Data}
+\section{Data Processing}
+\section{Visualisation Design}
+\section{Tasks}
+\section{Must-Have Features}
+\section{Optional Features.}
+\section{Project Schedule}
+\section{Implementation details}
+
+\end{document}
