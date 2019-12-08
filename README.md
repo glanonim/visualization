@@ -62,3 +62,4 @@ Forestation:
 3. Countries area: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2
 4. Forest area per country: https://data.worldbank.org/indicator/AG.LND.FRST.ZS
 5. Air passengers per year: https://data.worldbank.org/indicator/IS.AIR.PSGR
+6. (Update) CO2 from Total fossil fuels and cement (by 2018) : https://www.climatewatchdata.org/ghg-emissions?source=50
