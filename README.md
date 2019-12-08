@@ -42,7 +42,7 @@ Forestation:
 
 6. Area of forests in this year and country
 
-Energy
+Energy:
 (new) #2. CO2 emissions from electricity and heat production, total (% of total fuel combustion) by 2014
 (new) #6. Total fossil fuels and cement by 2018
 
@@ -55,6 +55,8 @@ Manufacturing industries & construction:
 Agricultural:
 (new) #5. Agricultural methane emissions (thousand metric tons of CO2 equivalent)
 
+Waste:
+(new) #7. CO2 from Waste by 2016
 
 # Milestones
 1. Close mock-up - Kris, All - this week, 08.12.2019
@@ -86,3 +88,4 @@ Agricultural:
 https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE
 12. (Update) #6. Total fossil fuels and cement by 2018 : 
 https://www.climatewatchdata.org/embed/ghg-emissions?source=50
+13. (Update) #7. CO2 from Waste by 2016 : https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=47&historical-emissions-end_year=2016&historical-emissions-gases=190&historical-emissions-regions=&historical-emissions-sectors=577&page=1&sort_col=gas&sort_dir=ASC
