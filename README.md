@@ -36,10 +36,24 @@ Transportation:
 
 4. Amount of passengers in this year and country
 5. Amount of air travel per citizen
+(new) #1.CO2 emissions from transport (%of total fuel combusion) by 2014
 
 Forestation:
 
 6. Area of forests in this year and country
+
+Electricity and heat production
+(new) #2. CO2 emissions from electricity and heat production, total (% of total fuel combustion) by 2014
+
+Residential building & commercial and public services
+(new) #3. CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion)
+
+Manufacturing industries & construction
+(new) #4. CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
+
+Agricultural
+(new) #5. Agricultural methane emissions (thousand metric tons of CO2 equivalent)
+
 
 # Milestones
 1. Close mock-up - Kris, All - this week, 08.12.2019
@@ -63,3 +77,9 @@ Forestation:
 4. Forest area per country: https://data.worldbank.org/indicator/AG.LND.FRST.ZS
 5. Air passengers per year: https://data.worldbank.org/indicator/IS.AIR.PSGR
 6. (Update) CO2 from Total fossil fuels and cement (by 2018) : https://www.climatewatchdata.org/ghg-emissions?source=50
+7. (Update) #1 CO2 emissions from transport (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS
+8. (Update) #2 CO2 emissions from electricity and heat production, total (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS
+9. (Update) #3 CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS
+10. (Update) #4 CO2 emissions from manufacturing industries and construction (% of total fuel combustion) : CO2 emissions from manufacturing industries and construction (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.MANF.ZS
+11. (Update) #5. Agricultural methane emissions (thousand metric tons of CO2 equivalent) : 
+https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE
