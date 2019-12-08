@@ -42,16 +42,17 @@ Forestation:
 
 6. Area of forests in this year and country
 
-Electricity and heat production
+Energy
 (new) #2. CO2 emissions from electricity and heat production, total (% of total fuel combustion) by 2014
+(new) #6. Total fossil fuels and cement by 2018
 
-Residential building & commercial and public services
+Residential building & commercial and public services:
 (new) #3. CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion)
 
-Manufacturing industries & construction
+Manufacturing industries & construction:
 (new) #4. CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
 
-Agricultural
+Agricultural:
 (new) #5. Agricultural methane emissions (thousand metric tons of CO2 equivalent)
 
 
@@ -83,3 +84,5 @@ Agricultural
 10. (Update) #4 CO2 emissions from manufacturing industries and construction (% of total fuel combustion) : CO2 emissions from manufacturing industries and construction (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.MANF.ZS
 11. (Update) #5. Agricultural methane emissions (thousand metric tons of CO2 equivalent) : 
 https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE
+12. (Update) #6. Total fossil fuels and cement by 2018 : 
+https://www.climatewatchdata.org/embed/ghg-emissions?source=50
