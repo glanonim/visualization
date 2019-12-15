@@ -37,6 +37,7 @@
     #countriesSelect ul li {
       cursor: pointer;
     }
+    .ic-sm{font-size:18px;}
 
     .btn-indigo {
       color: #fff;
@@ -130,6 +131,7 @@
     .bg-citizen-10 {
       background-color: #007bff;
     }
+    .radar{height:400px;}
   </style>
 
 </head>
@@ -138,13 +140,15 @@
   <!-- Begin page content -->
   <main role="main" class="flex-shrink-0">
     <div class="container">
+        <!-- Tutorial modal trigger -->
+        <!-- Modal after footer -->
       <button type="button" class="btn btn-outline-primary btn-sm float-right" data-toggle="modal"
         data-target="#helpModal">
         Beginners' guide
       </button>
       <h1 class="mt-5">CO<sub>2</sub> emission visualization</h1>
       <p class="lead">Play with year and display style to see how CO<sub>2</sub> emission progressed over recent years.
-        Select country to see more details
+        Select country to see more details...
       </p>
 
     </div>
@@ -152,28 +156,30 @@
 
   <div class="container-fluid border-top border-bottom mt-3 px-0 ">
     <button type="button" id="showSidePanel" class="btn btn-sm btn-primary position-absolute mt-3 ml-3"
-      title="Show side panel"><i class="material-icons pt-1">chevron_right</i></button>
+      title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1" >chevron_right</i></button>
     <div class="col-10 col-md-5 col-xl-3 bg-light position-absolute overflow-auto" id="countriesSelect">
       <div class="row my-3">
         <div class="col">
-          <h3 class="">Select country</h3>
+          <h5 class="">Pick X to Y countries to display details</h5>
         </div>
         <div class="col-3">
-          <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary" title="Hide this panel"><i
-              class="material-icons pt-1">chevron_left</i></button>
+          <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary" title="Hide this panel" data-toggle="tooltip"><i
+              class="material-icons pt-1" >chevron_left</i></button>
 
         </div>
       </div>
       <div class="row">
         <div class="col">
           <ul class="list-group mb-3">
+              <!-- Display countries to pick -->
             <li class="list-group-item list-group-item-action">
               Germany
               <span class="badge badge-pill badge-dark bg-citizen-10">312 kg/citizen</span>
             </li>
             <li class="list-group-item list-group-item-action">
               United Kingdom
-              <span class="badge badge-pill badge-dark bg-citizen-10">309 kg/citizen</span></li>
+              <span class="badge badge-pill badge-dark bg-citizen-10">309 kg/citizen</span>
+            </li>
             <li class="list-group-item list-group-item-action">
               Spain
               <span class="badge badge-pill badge-dark bg-citizen-9">213 kg/citizen</span>
@@ -220,6 +226,7 @@
           <div class="col text-right">
             <label for="legend" class="mt-3"><strong>Legend: </strong></label>
           </div>
+          <!-- Generate legend -->
           <div class="col-10 pt-1">
             <div class="row">
               <div class="col text-left" id="legendLeft">
@@ -259,13 +266,15 @@
           <div class="col text-right">
             <label for="yearSelect" class="btn btn-sm btn-primary mb-1">Year: </label>
           </div>
+          <!-- Pick year -->
           <div class="col-10 pt-1">
             <input type="range" class="custom-range" id="yearSelect" min="1964" max="2019" step="1" value="2019">
           </div>
         </div>
       </div>
+      <!-- Play years animation -->
       <div class="col-1">
-        <button type="button" class="btn btn-sm btn-primary" title="Play animation over years"><i
+        <button type="button" class="btn btn-sm btn-primary" title="Play animation over years"  data-toggle="tooltip"><i
             class="material-icons pt-1">play_arrow</i></button>
 
       </div>
@@ -273,10 +282,16 @@
     <div class="row mt-3">
       <div class="col-12 pt-1">
         <div class="row">
-          <div class="col-12 col-md-4 col-lg-4 offset-lg-2 col-xl-3 offset-xl-5">
+            <!-- Clear picked countries -->
+            <div class="col-12 col-md-3 col-lg-4 offset-lg-2 col-xl-2 offset-xl-3 text-right">
+            <button type="button" class="btn btn-sm btn-secondary" title="Reset picked countries" data-toggle="tooltip"><i
+              class="material-icons ic-sm pt-1 ic-sm">cached</i></button>
+            </div>
+            <!-- Pick other display styles -->
+          <div class="col-12 col-md-3 col-lg-4 col-xl-3"> 
             <p class="mb-1 text-right"><strong>Display CO<sub>2</sub> emission per: </strong></p>
           </div>
-          <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+          <div class="col-12 col-md-6 col-lg-6 col-xl-4">
             <div class="btn-group btn-group-sm btn-block" role="group" aria-label="Data display">
               <button type="button" class="btn btn-primary mapCat" id="mapCitizen">citizen of a country</button>
               <button type="button" class="btn btn-info mapCat" id="mapArea">km<sup>2</sup> of country area</button>
@@ -286,7 +301,38 @@
         </div>
       </div>
     </div>
-
+    <div class="row my-3">
+        <div class="col my-3">
+        <h1 class="mt-4" id="yearUpdate">Details</h1>
+      </div>
+    </div>
+    <!-- Display radar chart -->
+    <div class="row">
+        <div class="col-3">
+          <div class="nav flex-column nav-pills" id="cat-pills" role="tablist" aria-orientation="vertical">
+            <a class="nav-link" id="cat-transport-tab" data-toggle="pill" href="#cat-transport" role="tab" aria-controls="cat-transport" aria-selected="true">Transportation</a>
+            <a class="nav-link" id="cat-energy-tab" data-toggle="pill" href="#cat-energy" role="tab" aria-controls="cat-energy" aria-selected="false">Energy</a>  
+          </div> 
+        </div>
+        <div class="col-9">
+          <div class="tab-content">
+            <div class="tab-pane fade" id="cat-transport" role="tabpanel" aria-labelledby="cat-transport-tab">
+              <h3>Amount of air travels per country</h3>
+              <p class="lead">Description</p>
+              <div class="radar" id="radar-transport"></div>
+            </div>
+            <div class="tab-pane fade" id="cat-energy" role="tabpanel" aria-labelledby="cat-energy-tab">
+                <h3>Amount of sth per country</h3>
+                <p class="lead">Description</p>
+              <div class="radar" id="radar-energy"></div>
+              <h3>Amount of sth per citizen</h3>
+              <p class="lead">Description</p>
+              <div class="radar" id="radar-energy-cit"></div>
+            </div> 
+          </div>
+        </div>
+      </div>
+<!--
     <div class="row my-3">
       <div class="col-12">
         <h2>More details</h2>
@@ -514,7 +560,10 @@
     </div>
 
   </div>
+-->
+
   </div>
+
 
   <footer class="footer mt-auto py-5 border-top bg-light mt-5">
     <div class="container">
@@ -552,10 +601,15 @@
 </body>
 
 <!-- jQuery library -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- tooltips -->
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
 
 
 <!-- Map library -->
@@ -2315,6 +2369,124 @@ chartBar.legend.margin(5,5,20,5);
 
   }); // end am4core.ready()
     // line chart end
+</script>
+
+<!-- Chart code -->
+<script>
+    $("#cat-pills a").click(function () { 
+      
+      /* Create chart instance */
+      chart.updateCurrentData;
+      /* Create chart instance */
+      chartEnergy.updateCurrentData;
+      /* Create chart instance */
+      chartEnergyCit.updateCurrentData;
+
+    });// radar chart end
+
+    am4core.ready(function() {
+    
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+    
+    /* Create chart instance */
+    var chart = am4core.create("radar-transport", am4charts.RadarChart);
+    /* Create chart instance */
+    var chartEnergy = am4core.create("radar-energy", am4charts.RadarChart);
+    /* Create chart instance */
+    var chartEnergyCit = am4core.create("radar-energy-cit", am4charts.RadarChart);
+    
+    /* Add data */
+    chart.data = [{
+      "country": "Lithuania",
+      "litres": 6767000
+    }, {
+      "country": "Czechia",
+      "litres": 11124000
+    }, {
+      "country": "Ireland",
+      "litres": 12167000
+    }, {
+      "country": "Germany",
+      "litres": 82354555
+    }, {
+      "country": "Australia",
+      "litres": 12657234
+    }, {
+      "country": "Austria",
+      "litres": 22312123
+    }, {
+      "country": "UK",
+      "litres": 78123123
+    }, {
+      "country": "Belgium",
+      "litres": 9123857
+    }, {
+      "country": "The Netherlands",
+      "litres": 28123412
+    }];
+    chartEnergy.data = [{
+      "country": "Lithuania",
+      "litres": 1.3
+    }, {
+      "country": "Czechia",
+      "litres": 1.1
+    }, {
+      "country": "Ireland",
+      "litres": 1.2  
+    }];
+    chartEnergyCit.data = [{
+      "country": "Lithuania",
+      "litres": 1.3
+    }, {
+      "country": "Czechia",
+      "litres": 1.1
+    }, {
+      "country": "Ireland",
+      "litres": 1.2  
+    }];
+
+    /* Create axes */
+    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    var categoryAxisEnergy = chartEnergy.xAxes.push(new am4charts.CategoryAxis());
+    var categoryAxisEnergyCit = chartEnergyCit.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "country";
+    categoryAxisEnergy.dataFields.category = "country";
+    categoryAxisEnergyCit.dataFields.category = "country";
+    
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    var valueAxisEnergy = chartEnergy.yAxes.push(new am4charts.ValueAxis());
+    var valueAxisEnergyCit = chartEnergyCit.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
+    valueAxisEnergy.renderer.axisFills.template.fill = chartEnergy.colors.getIndex(2);
+    valueAxisEnergyCit.renderer.axisFills.template.fill = chartEnergyCit.colors.getIndex(2);
+    valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
+    valueAxisEnergy.renderer.axisFills.template.fillOpacity = 0.05;
+    valueAxisEnergyCit.renderer.axisFills.template.fillOpacity = 0.05;
+    
+    /* Create and configure series */
+    var series = chart.series.push(new am4charts.RadarSeries());
+    series.dataFields.valueY = "litres";
+    series.dataFields.categoryX = "country";
+    series.name = "Sales";
+    series.strokeWidth = 3;
+     
+    /* Create and configure series */
+    var seriesEnergy = chartEnergy.series.push(new am4charts.RadarSeries()); 
+    seriesEnergy.dataFields.valueY = "litres";
+    seriesEnergy.dataFields.categoryX = "country";
+    seriesEnergy.name = "Sales";
+    seriesEnergy.strokeWidth = 3;
+     
+    /* Create and configure series */
+    var seriesEnergyCit = chartEnergyCit.series.push(new am4charts.RadarSeries()); 
+    seriesEnergyCit.dataFields.valueY = "litres";
+    seriesEnergyCit.dataFields.categoryX = "country";
+    seriesEnergyCit.name = "Sales";
+    seriesEnergyCit.strokeWidth = 3;
+    
+    }); // end am4core.ready()
 </script>
 
 
