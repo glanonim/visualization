@@ -30,9 +30,8 @@
         data-target="#helpModal">
         Beginners' guide
       </button>
-      <h1 class="mt-5">CO<sub>2</sub> emission visualization</h1>
-      <p class="lead">Play with year and display style to see how CO<sub>2</sub> emission progressed over recent years.
-        Select countries to see more details below or switch tab to see change in full timespan
+      <h1 class="mt-5">How have global CO<sub>2</sub> emissions changed over time?</h1>
+      <p class="lead">The visualisation presents the long-run perspective on global CO2 emissions. Play with year and display style to see how CO2 emission progressed over recent years. Select country to see more details...
       </p>
 
     </main>
@@ -220,6 +219,10 @@
           <div class="row my-3">
             <div class="col my-3">
               <h1 class="mt-4" id="yearUpdate">Details</h1>
+              <p class="lead">Which is the largest contributor to carbon dioxide emissions? You can check the details of each country by sector.</p> 
+              <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#ModalExp">
+                <i class="material-icons mt-1">contact_support</i>
+              </button>
             </div>
           </div>
           <!-- Display radar chart -->
@@ -492,6 +495,34 @@
     </div>
   </div>
 
+<!-- Modal -->
+<div class="modal fade" id="ModalExp" tabindex="-1" role="dialog" aria-labelledby="ModalExpLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalExpLabel">Explanation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<h5>Global greenhouse gas emissions are broken down by sectoral sources in the sections which follow:</h5>
+<p><b>Transport:</b> domestic aviation, road transportation, rail transportation, domestic navigation, other transportation.</p>
+<p><b>Energy (energy, manufacturing and construction industries and fugitive emissions):</b> emissions are inclusive of public heat and electricity production; other energy industries; fugitive emissions from solid fuels, oil and gas, manufacturing industries and construction.</p>
+<p><b>International bunkers:</b> international aviation; international navigation/shipping.</p>
+<p><b>Residential, commercial, institutional and AFF:</b> Residential and other sectors.</p>
+<p><b>Industry (industrial processes and product use):</b> production of minerals, chemicals, metals, pulp/paper/food/drink, halocarbons, refrigeration and air conditioning; aerosols and solvents; semicondutor/electronics manufacture; electrical equipment.</p>
+<p><b>Waste:</b> solid waste disposal; wastewater handling; waste incineration; other waste handling.</p>
+<p><b>Land use:</b> emissions from the net conversion of forest; cropland; grassland and burning biomass for agriculture and other uses, including Argiculture category :methane and nitrous oxide emissions from enteric fermentation; manure management; rice cultivation; synthetic fertilizers; manure applied to soils; manure left on pasture; crop residues; burning crop residues, savanna and cultivation of organic soils.</p>
+<p><b>Other sources:</b> fossil fuel fires; indirect nitrous oxide from non-agricultural NOx and ammonia; other anthropogenic sources.</p>
+<small>Sources: IEA Statistics &copy; OECD/IEA 2014 (http://www.iea.org/stats/index.asp), subject to https://www.iea.org/t&c/termsandconditions/</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 <!-- jQuery library -->
