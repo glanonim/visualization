@@ -1,0 +1,132 @@
+    .progress {
+      height: 1.5rem;
+    }
+
+    .chart {
+      width: 100%;
+      height: 500px;
+    }
+
+    #countriesSelect {
+      z-index: 1001;
+      height: 500px;
+    }
+
+    #showSidePanel {
+      display: none;
+      z-index: 1002;
+    }
+
+    #countriesSelect ul li {
+      cursor: pointer;
+    }
+
+    .ic-sm {
+      font-size: 18px;
+    }
+
+    .btn-indigo {
+      color: #fff;
+      background-color: #6610f2;
+      border-color: #6610f2;
+    }
+
+    .btn-indigo:hover {
+      color: #fff;
+      background-color: #590bd9;
+      border-color: #590bd9;
+    }
+
+    .btn-indigo:focus {
+      background-color: #4a1a99;
+      border-color: #4a1a99;
+    }
+
+    .btn-indigo:focus,
+    .btn-indigo.focus {
+      color: #fff;
+      box-shadow: 0 0 0 0.2rem rgba(79, 13, 186, 0.5);
+    }
+
+    .btn-indigo:active {
+      color: #fff;
+      background-color: #4a1a99;
+      border-color: #4a1a99;
+    }
+
+    .bg-no-data {
+      background-color: #eee;
+    }
+
+    .bg-n1 {
+      background-color: #34ebc0;
+    }
+
+    .bg-n2 {
+      background-color: #34aeeb;
+    }
+
+    .bg-n3 {
+      background-color: #34d3eb;
+    }
+
+    .bg-n4 {
+      background-color: #346beb;
+    }
+
+    .bg-n5 {
+      background-color: #3437eb;
+    }
+
+    .bg-n6 {
+      background-color: #9934eb;
+    }
+
+    .bg-citizen-1 {
+      background-color: #8f8f8f;
+    }
+
+    .bg-citizen-2 {
+      background-color: #9aa8b8;
+    }
+
+    .bg-citizen-3 {
+      background-color: #7f97b3;
+    }
+
+    .bg-citizen-4 {
+      background-color: #698db5;
+    }
+
+    .bg-citizen-5 {
+      background-color: #4f81b8;
+    }
+
+    .bg-citizen-6 {
+      background-color: #3576bd;
+    }
+
+    .bg-citizen-7 {
+      background-color: #1768bf;
+    }
+
+    .bg-citizen-8 {
+      background-color: #0062cc;
+    }
+
+    .bg-citizen-9 {
+      background-color: #006ee6;
+    }
+
+    .bg-citizen-10 {
+      background-color: #007bff;
+    }
+
+    .radar {
+      height: 400px;
+    }
+
+    small {
+      font-size: 60%
+    }
+    #resetCountries{top:0.5em;right:0.5em;}

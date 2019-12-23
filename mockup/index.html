@@ -14,566 +14,316 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <style>
-    .progress {
-      height: 1.5rem;
-    }
-
-    .chart {
-      width: 100%;
-      height: 500px;
-    }
-
-    #countriesSelect {
-      z-index: 1001;
-      height: 500px;
-    }
-
-    #showSidePanel {
-      display: none;
-      z-index: 1002;
-    }
-
-    #countriesSelect ul li {
-      cursor: pointer;
-    }
-    .ic-sm{font-size:18px;}
-
-    .btn-indigo {
-      color: #fff;
-      background-color: #6610f2;
-      border-color: #6610f2;
-    }
-
-    .btn-indigo:hover {
-      color: #fff;
-      background-color: #590bd9;
-      border-color: #590bd9;
-    }
-
-    .btn-indigo:focus {
-      background-color: #4a1a99;
-      border-color: #4a1a99;
-    }
-
-    .btn-indigo:focus,
-    .btn-indigo.focus {
-      color: #fff;
-      box-shadow: 0 0 0 0.2rem rgba(79, 13, 186, 0.5);
-    }
-
-    .btn-indigo:active {
-      color: #fff;
-      background-color: #4a1a99;
-      border-color: #4a1a99;
-    }
-
-    .bg-n1 {
-      background-color: #34ebc0;
-    }
-
-    .bg-n2 {
-      background-color: #34aeeb;
-    }
-
-    .bg-n3 {
-      background-color: #34d3eb;
-    }
-
-    .bg-n4 {
-      background-color: #346beb;
-    }
-
-    .bg-n5 {
-      background-color: #3437eb;
-    }
-
-    .bg-n6 {
-      background-color: #9934eb;
-    }
-
-    .bg-citizen-1 {
-      background-color: #8f8f8f;
-    }
-
-    .bg-citizen-2 {
-      background-color: #9aa8b8;
-    }
-
-    .bg-citizen-3 {
-      background-color: #7f97b3;
-    }
-
-    .bg-citizen-4 {
-      background-color: #698db5;
-    }
-
-    .bg-citizen-5 {
-      background-color: #4f81b8;
-    }
-
-    .bg-citizen-6 {
-      background-color: #3576bd;
-    }
-
-    .bg-citizen-7 {
-      background-color: #1768bf;
-    }
-
-    .bg-citizen-8 {
-      background-color: #0062cc;
-    }
-
-    .bg-citizen-9 {
-      background-color: #006ee6;
-    }
-
-    .bg-citizen-10 {
-      background-color: #007bff;
-    }
-    .radar{height:400px;}
-  </style>
+  <!-- Material Icons font -->
+  <link href="https://glanonim.com/Archive/visualization/css/main.css" rel="stylesheet">
 
 </head>
 
 <body class="d-flex flex-column h-100">
-  <!-- Begin page content -->
-  <main role="main" class="flex-shrink-0">
-    <div class="container">
-        <!-- Tutorial modal trigger -->
-        <!-- Modal after footer -->
+  <div class="container">
+
+    <!-- Begin page content -->
+    <main role="main" class="flex-shrink-0">
+      <!-- Tutorial modal trigger -->
+      <!-- Modal after footer -->
       <button type="button" class="btn btn-outline-primary btn-sm float-right" data-toggle="modal"
         data-target="#helpModal">
         Beginners' guide
       </button>
       <h1 class="mt-5">CO<sub>2</sub> emission visualization</h1>
       <p class="lead">Play with year and display style to see how CO<sub>2</sub> emission progressed over recent years.
-        Select country to see more details...
+        Select countries to see more details below or switch tab to see change in full timespan
       </p>
 
-    </div>
-  </main>
-
-  <div class="container-fluid border-top border-bottom mt-3 px-0 ">
-    <button type="button" id="showSidePanel" class="btn btn-sm btn-primary position-absolute mt-3 ml-3"
-      title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1" >chevron_right</i></button>
-    <div class="col-10 col-md-5 col-xl-3 bg-light position-absolute overflow-auto" id="countriesSelect">
-      <div class="row my-3">
-        <div class="col">
-          <h5 class="">Pick X to Y countries to display details</h5>
-        </div>
-        <div class="col-3">
-          <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary" title="Hide this panel" data-toggle="tooltip"><i
-              class="material-icons pt-1" >chevron_left</i></button>
-
-        </div>
+    </main>
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-map-tab" data-toggle="tab" href="#nav-map" role="tab"
+          aria-controls="nav-map" aria-selected="true">Map & details</a>
+        <a class="nav-item nav-link" id="nav-timespan-tab" data-toggle="tab" href="#nav-timespan" role="tab"
+          aria-controls="nav-timespan" aria-selected="false">Timespan</a>
       </div>
-      <div class="row">
-        <div class="col">
-          <ul class="list-group mb-3">
-              <!-- Display countries to pick -->
-            <li class="list-group-item list-group-item-action">
-              Germany
-              <span class="badge badge-pill badge-dark bg-citizen-10">312 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              United Kingdom
-              <span class="badge badge-pill badge-dark bg-citizen-10">309 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Spain
-              <span class="badge badge-pill badge-dark bg-citizen-9">213 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Russia
-              <span class="badge badge-pill badge-dark bg-citizen-8">183 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              France
-              <span class="badge badge-pill badge-dark bg-citizen-7">132 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Country
-              <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Country
-              <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Country
-              <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Country
-              <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-            </li>
-            <li class="list-group-item list-group-item-action">
-              Country
-              <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="chart" id="globeChart">
-    </div>
-  </div>
-  <div class="container py-3">
-    <div class="row mt-1">
-      <div class="col">
-        <div class="row">
-          <div class="col text-right">
-            <label for="legend" class="mt-3"><strong>Legend: </strong></label>
-          </div>
-          <!-- Generate legend -->
-          <div class="col-10 pt-1">
-            <div class="row">
-              <div class="col text-left" id="legendLeft">
-                10
+    </nav>
+
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="nav-map" role="tabpanel" aria-labelledby="nav-map-tab">
+         <!-- Start of map -->
+        <div class="position-relative border mt-3 px-0">
+             
+          <!-- Show side panel -->
+          <button type="button" id="showSidePanel" class="btn btn-sm btn-primary position-absolute mt-3 ml-3"
+            title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1">chevron_right</i></button>
+          <div class="col-10 col-md-5 col-xl-3 bg-light position-absolute overflow-auto" id="countriesSelect">
+            <div class="row my-3">
+              <div class="col">
+                <h5 class="">Pick countries to display details</h5>
               </div>
-              <div class="col-10 text-center text-muted" id="legendTxt">
-                CO<sub>2</sub> emission of a country in kg/citizen
-              </div>
-              <div class="col text-right" id="legendRight">
-                3212
+              <div class="col-3">
+                <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary" title="Hide this panel"
+                  data-toggle="tooltip"><i class="material-icons pt-1">chevron_left</i></button>
+
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <div class="progress">
-                  <div class="progress-bar bg-citizen-1" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-2" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-3" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-4" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-5" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-6" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-7" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-8" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-9" role="progressbar" style="width: 10%" aria-valuenow="10"></div>
-                  <div class="progress-bar bg-citizen-10" role="progressbar" style="width: 10%" aria-valuenow="10">
+                <ul class="list-group mb-3">
+                  <!-- Display countries to pick -->
+                  <li class="list-group-item list-group-item-action">
+                    Germany
+                    <span class="badge badge-pill badge-dark bg-citizen-10">312 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    United Kingdom
+                    <span class="badge badge-pill badge-dark bg-citizen-10">309 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Spain
+                    <span class="badge badge-pill badge-dark bg-citizen-9">213 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Russia
+                    <span class="badge badge-pill badge-dark bg-citizen-8">183 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    France
+                    <span class="badge badge-pill badge-dark bg-citizen-7">132 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Country
+                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Country
+                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Country
+                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Country
+                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Country
+                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+           <!-- Generate map -->
+          <div class="chart" id="globeChart">
+          </div>
+          
+           <!-- Button to reset countries -->
+          <button type="button" class="btn btn-sm btn-light position-absolute border" id="resetCountries" title="Reset picked countries"
+            data-toggle="tooltip"><i class="material-icons ic-sm pt-1 ic-sm">cached</i></button>
+        </div>
+        <div class="row mt-1 py-3">
+          <div class="col">
+            <div class="row">
+              <div class="col text-right">
+                <label for="legend" class="mt-3"><strong>Legend: </strong></label>
+              </div>
+              <!-- Generate legend -->
+              <div class="col-9 pt-1">
+                <div class="row">
+                  <div class="col text-left" id="noData">
+                    <small>No data</small>
+                  </div>
+                  <div class="col text-left" id="legendLeft">
+                    <small>10</small>
+                  </div>
+                  <div class="col-9 text-center text-muted" id="legendTxt">
+                    CO<sub>2</sub> emission of a country in kg/citizen
+                  </div>
+                  <div class="col text-right" id="legendRight">
+                    <small>3212</small>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="progress">
+                      <div class="progress-bar bg-no-data" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-1" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-2" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-3" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-4" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-5" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-6" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-7" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-8" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-9" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                      <div class="progress-bar bg-citizen-10" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col pt-2">
-        <div class="row">
-          <div class="col text-right">
-            <label for="yearSelect" class="btn btn-sm btn-primary mb-1">Year: </label>
-          </div>
-          <!-- Pick year -->
-          <div class="col-10 pt-1">
-            <input type="range" class="custom-range" id="yearSelect" min="1964" max="2019" step="1" value="2019">
+        <div class="row mt-3">
+          <div class="col pt-2">
+            <div class="row">
+              <!-- Play years animation -->
+              <div class="col text-right">
+                <label for="yearSelect" class="btn btn btn-outline-primary mb-1">Year: </label>
+                <button type="button" class="btn btn-sm btn-primary mb-1" title="Play animation over years"
+                  data-toggle="tooltip"><i class="material-icons pt-1 ic-sm">play_arrow</i></button>
+              </div>
+              <!-- Pick year -->
+              <div class="col-9 pt-1">
+                <input type="range" class="custom-range" id="yearSelect" min="1964" max="2019" step="1" value="2019">
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Play years animation -->
-      <div class="col-1">
-        <button type="button" class="btn btn-sm btn-primary" title="Play animation over years"  data-toggle="tooltip"><i
-            class="material-icons pt-1">play_arrow</i></button>
+        <div class="row mt-3">
+          <div class="col-12 pt-1">
+            <div class="row">
+              <!-- Clear picked countries -->
+              <div class="col-12 col-md-3 col-lg-4 offset-lg-2 col-xl-2 offset-xl-3 text-right">
+              </div>
+              <!-- Pick other display styles -->
+              <div class="col-12 col-md-3 col-lg-4 col-xl-3">
+                <p class="mb-1 text-right"><strong>Display CO<sub>2</sub> emission per: </strong></p>
+              </div>
+              <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                <div class="btn-group btn-group-sm btn-block" role="group" aria-label="Data display">
+                  <button type="button" class="btn btn-primary mapCat" id="mapCitizen">citizen of a country</button>
+                  <button type="button" class="btn btn-info mapCat" id="mapArea">km<sup>2</sup> of country area</button>
+                  <button type="button" class="btn btn-indigo mapCat" id="mapCountry">country</button>
+                </div>
+                <small class="text-muted float-right mt-2">Data source: <a
+                    href="https://data.world/makeovermonday/2019w22">evamurray</a>, <a
+                    href="https://data.world/oecd/population/">OECD</a> via data.world and WorldBank: <a
+                    href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2">1</a>, <a
+                    href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS">2</a>, <a
+                    href="https://data.worldbank.org/indicator/IS.AIR.PSGR">3</a></small>
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="col my-3">
+              <h1 class="mt-4" id="yearUpdate">Details</h1>
+            </div>
+          </div>
+          <!-- Display radar chart -->
+          <div class="row">
+            <div class="col-3">
+              <div class="nav flex-column nav-pills" id="cat-pills" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="cat-transport-tab" data-toggle="pill" href="#cat-transport" role="tab"
+                  aria-controls="cat-transport" aria-selected="true">Transportation</a>
+                <a class="nav-link" id="cat-energy-tab" data-toggle="pill" href="#cat-energy" role="tab"
+                  aria-controls="cat-energy" aria-selected="false">Energy</a>
+                <a class="nav-link" id="cat-industry-tab" data-toggle="pill" href="#cat-industry" role="tab"
+                  aria-controls="cat-industry" aria-selected="false">Industry</a>
+                <a class="nav-link" id="cat-residential-tab" data-toggle="pill" href="#cat-residential" role="tab"
+                  aria-controls="cat-residential" aria-selected="false">Residential Buildings</a>
+                <a class="nav-link" id="cat-land-tab" data-toggle="pill" href="#cat-land" role="tab"
+                  aria-controls="cat-land" aria-selected="false">Land</a>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="cat-transport" role="tabpanel"
+                  aria-labelledby="cat-transport-tab">
+                  <h3>CO2 emissions from transport (% of total fuel combustion) </h3>
+                  <p class="lead">CO2 emissions from transport contains emissions from the combustion of fuel for all
+                    transport activity, regardless of the sector, except for international marine bunkers and
+                    international aviation. This includes domestic aviation, domestic navigation, road, rail and
+                    pipeline
+                    transport, and corresponds to IPCC Source/Sink Category 1 A 3.</p>
+                  <div class="radar" id="radar-t1"></div>
+                  <a href="https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS"><small class="text-muted">Data Source:
+                      The
+                      International Transport Forum</small></a>
 
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-12 pt-1">
-        <div class="row">
-            <!-- Clear picked countries -->
-            <div class="col-12 col-md-3 col-lg-4 offset-lg-2 col-xl-2 offset-xl-3 text-right">
-            <button type="button" class="btn btn-sm btn-secondary" title="Reset picked countries" data-toggle="tooltip"><i
-              class="material-icons ic-sm pt-1 ic-sm">cached</i></button>
-            </div>
-            <!-- Pick other display styles -->
-          <div class="col-12 col-md-3 col-lg-4 col-xl-3"> 
-            <p class="mb-1 text-right"><strong>Display CO<sub>2</sub> emission per: </strong></p>
-          </div>
-          <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-            <div class="btn-group btn-group-sm btn-block" role="group" aria-label="Data display">
-              <button type="button" class="btn btn-primary mapCat" id="mapCitizen">citizen of a country</button>
-              <button type="button" class="btn btn-info mapCat" id="mapArea">km<sup>2</sup> of country area</button>
-              <button type="button" class="btn btn-indigo mapCat" id="mapCountry">country</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row my-3">
-        <div class="col my-3">
-        <h1 class="mt-4" id="yearUpdate">Details</h1>
-      </div>
-    </div>
-    <!-- Display radar chart -->
-    <div class="row">
-        <div class="col-3">
-          <div class="nav flex-column nav-pills" id="cat-pills" role="tablist" aria-orientation="vertical">
-            <a class="nav-link" id="cat-transport-tab" data-toggle="pill" href="#cat-transport" role="tab" aria-controls="cat-transport" aria-selected="true">Transportation</a>
-            <a class="nav-link" id="cat-energy-tab" data-toggle="pill" href="#cat-energy" role="tab" aria-controls="cat-energy" aria-selected="false">Energy</a>  
-          </div> 
-        </div>
-        <div class="col-9">
-          <div class="tab-content">
-            <div class="tab-pane fade" id="cat-transport" role="tabpanel" aria-labelledby="cat-transport-tab">
-              <h3>Amount of air travels per country</h3>
-              <p class="lead">Description</p>
-              <div class="radar" id="radar-transport"></div>
-            </div>
-            <div class="tab-pane fade" id="cat-energy" role="tabpanel" aria-labelledby="cat-energy-tab">
-                <h3>Amount of sth per country</h3>
-                <p class="lead">Description</p>
-              <div class="radar" id="radar-energy"></div>
-              <h3>Amount of sth per citizen</h3>
-              <p class="lead">Description</p>
-              <div class="radar" id="radar-energy-cit"></div>
-            </div> 
-          </div>
-        </div>
-      </div>
-<!--
-    <div class="row my-3">
-      <div class="col-12">
-        <h2>More details</h2>
-        <p class="lead">Select countries to display details by clicking on map or from panel located on left side of the
-          map. Click button above list of countries in the side panel to hide the left panel</p>
-      </div>
-    </div>
-    <div class="row ">
-      <div class="col my-3">
-        <h1 class="mt-4" id="yearUpdate">Details</h1>
-        <div class="row">
-          <div class="col-12 col-md-4">
-            <h4 class="mt-3 mb-2">Legend</h4>
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Germany
-                <span class="badge badge-primary badge-pill bg-n1">DE</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                United Kingdom
-                <span class="badge badge-primary badge-pill bg-n2">UK</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <h4 class="mt-4">General data</h4>
-        <div class="row mt-4">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Area of the country</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                aria-valuemax="100">76523 km2</div>
+                  <h3 class="mt-5">Goods transport</h3 class="mb-5">
+                  <p class="lead">Variables collected are inland transport of goods (T-km). Additional information is
+                    also
+                    gathered on containers transported by rail and sea (Tons and TEU) as well as short sea shipping data
+                    (T-km).</p>
+                  <div class="radar" id="radar-t1"></div>
+                  <a href="https://stats.oecd.org/BrandedView.aspx?oecd_bv_id=trsprt-data-en&doi=g2g5557d-en"><small
+                      class="text-muted">Data Source: IEA Statistics © OECD/IEA 2014</small></a>
+
+                  <h3 class="mt-5">Air passengers per country</h3 class="mb-5">
+                  <p class="lead">The air transport data represent the total (international and domestic) scheduled
+                    traffic carried by the air carriers registered in a country</p>
+                  <div class="radar" id="radar-t3"></div>
+                  <a href="https://data.worldbank.org/indicator/IS.AIR.PSGR"><small class="text-muted">Data Source: IEA
+                      Statistics © OECD/IEA 2014</small></a>
+
+                </div>
+                <div class="tab-pane fade" id="cat-energy" role="tabpanel" aria-labelledby="cat-energy-tab">
+                  <h3>Energy use (kg of oil equivalent per capita)</h3>
+                  <p class="lead">Energy use refers to use of primary energy before transformation to other end-use
+                    fuels, which is equal to indigenous production plus imports and stock changes, minus exports and
+                    fuels supplied to ships and aircraft engaged in international transport.</p>
+                  <div class="radar" id="radar-e1"></div>
+                  <a href="https://data.worldbank.org/indicator/EG.USE.PCAP.KG.OE"><small class="text-muted">Data
+                      Source: IEA Statistics © OECD/IEA 2014</small></a>
+
+                  <h3 class="mt-5">Electricity production from oil, gas and coal sources (% of total)</h3 class="mt-5">
+                  <p class="lead">Sources of electricity refer to the inputs used to generate electricity.</p>
+                  <div class="radar" id="radar-e2"></div>
+                  <a href="https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS"><small class="text-muted">Data Source:
+                      IEA Statistics © OECD/IEA 2014 ( iea.org/stats/index.asp ), subject to
+                      iea.org/t&c/termsandconditions</small></a>
+
+                  <h3 class="mt-5">CO2 emissions from electricity and heat production, total (% of total fuel
+                    combustion)</h3>
+                  <p class="lead">CO2 emissions from electricity and heat production is the sum of three IEA categories
+                    of CO2 emissions:
+                    (1) Main Activity Producer Electricity and Heat which contains the sum of emissions from main
+                    activity producer electricity generation, combined heat and power generation and heat plants. Main
+                    activity producers (formerly known as public utilities) are defined as those undertakings whose
+                    primary activity is to supply the public. They may be publicly or privately owned. This corresponds
+                    to IPCC Source/Sink Category 1 A 1 a. For the CO2 emissions from fuel combustion (summary) file,
+                    emissions from own on-site use of fuel in power plants (EPOWERPLT) are also included.
+                    (2) Unallocated Autoproducers which contains the emissions from the generation of electricity and/or
+                    heat by autoproducers. Autoproducers are defined as undertakings that generate electricity and/or
+                    heat, wholly or partly for their own use as an activity which supports their primary activity. They
+                    may be privately or publicly owned. In the 1996 IPCC Guidelines, these emissions would normally be
+                    distributed between industry, transport and "other" sectors.
+                    (3) Other Energy Industries contains emissions from fuel combusted in petroleum refineries, for the
+                    manufacture of solid fuels, coal mining, oil and gas extraction and other energy-producing
+                    industries. </p>
+                  <div class="radar" id="radar-e2"></div>
+                  <a href="https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS"><small class="text-muted">Data Source:
+                      IEA Statistics © OECD/IEA 2014</small></a>
+
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 49%" aria-valuenow="49" aria-valuemin="0"
-                aria-valuemax="100">78523 km2</div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Number of citizens</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0"
-                aria-valuemax="100">83 per/km2</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 32%" aria-valuenow="32" aria-valuemin="0"
-                aria-valuemax="100">67 per/km2</div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Population density</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                aria-valuemax="100">83 012 123</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 42%" aria-valuenow="42" aria-valuemin="0"
-                aria-valuemax="100">73 012 123</div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Generated CO<sub>2</sub> amount</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 22%" aria-valuenow="22" aria-valuemin="0"
-                aria-valuemax="100">765 123 t</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 19%" aria-valuenow="19" aria-valuemin="0"
-                aria-valuemax="100">715 123 t</div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Generated CO<sub>2</sub> per citizen</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0"
-                aria-valuemax="100">765 kg/per</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 14%" aria-valuenow="14" aria-valuemin="0"
-                aria-valuemax="100">795 kg/per</div>
-            </div>
-          </div>
-        </div>
-        <h4 class="mb-2 mt-4">Transportation</h4>
-        <div class="row">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Amount of passengers</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                aria-valuemax="100">122 543 231</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0"
-                aria-valuemax="100">92 543 231</div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Amount of air travel per citizen</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0"
-                aria-valuemax="100">3,43</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0"
-                aria-valuemax="100">4,43</div>
-            </div>
-          </div>
-        </div>
-        <h4 class="mb-2 mt-4">Forestation</h4>
-        <div class="row">
-          <div class="col-12 col-md-3">
-            <p class="mb-0">Area of forests</p>
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n1" role="progressbar" style="width: 21%" aria-valuenow="21" aria-valuemin="0"
-                aria-valuemax="100">1254 km2</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 col-md-3">
-          </div>
-          <div class="col-12 col-md-9">
-            <div class="progress">
-              <div class="progress-bar bg-n2" role="progressbar" style="width: 3%" aria-valuenow="3" aria-valuemin="0"
-                aria-valuemax="100">254 km2</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row ">
-      <div class="col my-3">
-        <h1 class="mt-4" id="timelineUpdate">Details for complete timeline</h1>
-        <div class="row">
-          <div class="col-12 col-md-4">
-            <h4 class="mt-3 mb-2">Legend</h4>
-            <ul class="list-group">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Germany
-                <span class="badge badge-primary badge-pill bg-n1">DE</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                United Kingdom
-                <span class="badge badge-primary badge-pill bg-n2">UK</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row ">
-      <div class="col my-3">
-        <div class="chart" id="lineChart">
         </div>
       </div>
 
+      <div class="tab-pane fade" id="nav-timespan" role="tabpanel" aria-labelledby="nav-timespan-tab">
+        <h1>Timespan view</h1>
+      </div>
     </div>
-
   </div>
--->
-
-  </div>
-
 
   <footer class="footer mt-auto py-5 border-top bg-light mt-5">
     <div class="container">
       <div class="text-muted">&copy; 2019 by Kyung Hee Lee, Franziska Schmidt and Krzysztof Dabrowski for TH Köln
       </div>
-      <div class="text-muted">Data sourced from <a href="https://data.world/makeovermonday/2019w22">evamurray</a>, <a
-          href="https://data.world/oecd/population/">OECD</a> via data.world and WorldBank: <a
-          href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2">1</a>, <a
-          href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS">2</a>, <a
-          href="https://data.worldbank.org/indicator/IS.AIR.PSGR">3</a></div>
     </div>
   </footer>
 
@@ -601,9 +351,12 @@
 </body>
 
 <!-- jQuery library -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- tooltips -->
 <script>
   $(function () {
@@ -620,1874 +373,8 @@
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
 
-<!-- jQuery stuff -->
-<script>
-  $(function () {
-    // first time date load
-    year = $("#yearSelect").val();
-    $("label[for='yearSelect']").text("Year: " + year);
-    $("h1#yearUpdate").text("Details for " + year);
-    // mark first category as active
-    $("button#mapCitizen").addClass("active");
-    // toggle show side panel button 
-    $("#showSidePanel").toggle();
-    // fix css due to jQuery loading later
-    $("#showSidePanel").css("display", "none");
-
-    // date update
-    $("#yearSelect").change(function () {
-      year = $(this).val();
-      $("label[for='yearSelect']").text("Year: " + year);
-      $("h1#yearUpdate").text("Details for " + year);
-    });
-    // show and hide side panel to select country
-    $("#hideSidePanel").click(function () {
-      $("#countriesSelect").toggle();
-      $("#hideSidePanel").toggle();
-      $("#showSidePanel").toggle();
-    });
-    $("#showSidePanel").click(function () {
-      $("#countriesSelect").toggle();
-      $("#hideSidePanel").toggle();
-      $("#showSidePanel").toggle();
-    });
-
-    // change map category
-    // display per citizen, color: primary
-    $("button#mapCitizen").click(function () {
-      $("button.mapCat").removeClass("active");
-      $("button#mapCitizen").addClass("active");
-      // change legend and sidebar display
-    });
-    // display per are, color: info
-    $("button#mapArea").click(function () {
-      $("button.mapCat").removeClass("active");
-      $("button#mapArea").addClass("active");
-      // change legend and sidebar display
-    });
-    // display per country, color: indigo
-    $("button#mapCountry").click(function () {
-      $("button.mapCat").removeClass("active");
-      $("button#mapCountry").addClass("active");
-      // change legend and sidebar display
-    });
-  });
-</script>
-<!-- Initial display of map chart -->
-<script>
-  // map chart
-  am4core.ready(function () {
-
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
-
-    // Define country data
-    var countries = {
-      "AD": {
-        "country": "Andorra",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["andorraLow", "andorraHigh"]
-      },
-      "AE": {
-        "country": "United Arab Emirates",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["uaeLow", "uaeHigh"]
-      },
-      "AF": {
-        "country": "Afghanistan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "AG": {
-        "country": "Antigua and Barbuda",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["antiguaBarbudaLow", "antiguaBarbudaHigh"]
-      },
-      "AI": {
-        "country": "Anguilla",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["anguillaLow", "anguillaHigh"]
-      },
-      "AL": {
-        "country": "Albania",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["albaniaLow", "albaniaHigh"]
-      },
-      "AM": {
-        "country": "Armenia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["armeniaLow", "armeniaHigh"]
-      },
-      "AO": {
-        "country": "Angola",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["angolaLow", "angolaHigh"]
-      },
-      "AQ": {
-        "country": "Antarctica",
-        "continent_code": "AN",
-        "continent": "Antarctica",
-        "maps": []
-      },
-      "AR": {
-        "country": "Argentina",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["argentinaLow", "argentinaHigh"]
-      },
-      "AS": {
-        "country": "American Samoa",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": ["americanSamoaLow", "americanSamoaHigh"]
-      },
-      "AT": {
-        "country": "Austria",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["austriaLow", "austriaHigh"]
-      },
-      "AU": {
-        "country": "Australia",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": ["australiaLow", "australiaHigh"]
-      },
-      "AW": {
-        "country": "Aruba",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["arubaLow", "arubaHigh"]
-      },
-      "AX": {
-        "country": "Aland Islands",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "AZ": {
-        "country": "Azerbaijan",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["azerbaijanLow", "azerbaijanHigh"]
-      },
-      "BA": {
-        "country": "Bosnia and Herzegovina",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["bosniaHerzegovinaLow", "bosniaHerzegovinaHigh", "bosniaHerzegovinaCantonsLow", "bosniaHerzegovinaCantonsHigh"]
-      },
-      "BB": {
-        "country": "Barbados",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["barbadosLow", "barbadosHigh"]
-      },
-      "BD": {
-        "country": "Bangladesh",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["bangladeshLow", "bangladeshHigh"]
-      },
-      "BE": {
-        "country": "Belgium",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["belgiumLow", "belgiumHigh"]
-      },
-      "BF": {
-        "country": "Burkina Faso",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["burkinaFasoLow", "burkinaFasoHigh"]
-      },
-      "BG": {
-        "country": "Bulgaria",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["bulgariaLow", "bulgariaHigh"]
-      },
-      "BH": {
-        "country": "Bahrain",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["bahrainLow", "bahrainHigh"]
-      },
-      "BI": {
-        "country": "Burundi",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["burundiLow", "burundiHigh"]
-      },
-      "BJ": {
-        "country": "Benin",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["beninLow", "beninHigh"]
-      },
-      "BL": {
-        "country": "Saint Barthelemy",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "BM": {
-        "country": "Bermuda",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["bermudaLow", "bermudaHigh"]
-      },
-      "BN": {
-        "country": "Brunei Darussalam",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["bruneiDarussalamLow", "bruneiDarussalamHigh"]
-      },
-      "BO": {
-        "country": "Bolivia, Plurinational State of",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["boliviaLow", "boliviaHigh"]
-      },
-      "BQ": {
-        "country": "Bonaire, Sint Eustatius and Saba",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["bonaireSintEustatiusSabaLow", "bonaireSintEustatiusSabaHigh"]
-      },
-      "BR": {
-        "country": "Brazil",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["brazilLow", "brazilHigh"]
-      },
-      "BS": {
-        "country": "Bahamas",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "BT": {
-        "country": "Bhutan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["bhutanLow", "bhutanHigh"]
-      },
-      "BV": {
-        "country": "Bouvet Island",
-        "continent_code": "AN",
-        "continent": "Antarctica",
-        "maps": []
-      },
-      "BW": {
-        "country": "Botswana",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["botswanaLow", "botswanaHigh"]
-      },
-      "BY": {
-        "country": "Belarus",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["belarusLow", "belarusHigh"]
-      },
-      "BZ": {
-        "country": "Belize",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["belizeLow", "belizeHigh"]
-      },
-      "CA": {
-        "country": "Canada",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["canadaLow", "canadaHigh"]
-      },
-      "CC": {
-        "country": "Cocos (Keeling) Islands",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "CD": {
-        "country": "Congo, the Democratic Republic of the",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["congoDRLow", "congoDRHigh"]
-      },
-      "CF": {
-        "country": "Central African Republic",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["centralAfricanRepublicLow", "centralAfricanRepublicHigh"]
-      },
-      "CG": {
-        "country": "Congo",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["congoLow", "congoHigh"]
-      },
-      "CH": {
-        "country": "Switzerland",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["switzerlandLow", "switzerlandHigh"]
-      },
-      "CI": {
-        "country": "Cote d'Ivoire",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "CK": {
-        "country": "Cook Islands",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "CL": {
-        "country": "Chile",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["chileLow", "chileHigh"]
-      },
-      "CM": {
-        "country": "Cameroon",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["cameroonLow", "cameroonHigh"]
-      },
-      "CN": {
-        "country": "China",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["chinaLow", "chinaHigh"]
-      },
-      "CO": {
-        "country": "Colombia",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["colombiaLow", "colombiaHigh", "colombiaMuniLow", "colombiaMuniHigh"]
-      },
-      "CR": {
-        "country": "Costa Rica",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["costaRicaLow", "costaRicaHigh"]
-      },
-      "CU": {
-        "country": "Cuba",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "CV": {
-        "country": "Cape Verde",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["capeVerdeLow", "capeVerdeHigh"]
-      },
-      "CW": {
-        "country": "Curacao",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["curacaoLow", "curacaoHigh"]
-      },
-      "CX": {
-        "country": "Christmas Island",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "CY": {
-        "country": "Cyprus",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["cyprusLow", "cyprusHigh", "cyprusNorthCyprusLow", "cyprusNorthCyprusHigh"]
-      },
-      "CZ": {
-        "country": "Czech Republic",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["czechiaLow", "czechiaHigh"]
-      },
-      "DE": {
-        "country": "Germany",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["germanyLow", "germanyHigh"]
-      },
-      "DJ": {
-        "country": "Djibouti",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["djiboutiLow", "djiboutiHigh"]
-      },
-      "DK": {
-        "country": "Denmark",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["denmarkLow", "denmarkHigh"]
-      },
-      "DM": {
-        "country": "Dominica",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["dominicaLow", "dominicaHigh"]
-      },
-      "DO": {
-        "country": "Dominican Republic",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["dominicanRepublicLow", "dominicanRepublicHigh", "dominicanRepublicMuniLow", "dominicanRepublicMuniHigh"]
-      },
-      "DZ": {
-        "country": "Algeria",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["algeriaLow", "algeriaHigh"]
-      },
-      "EC": {
-        "country": "Ecuador",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["ecuadorLow", "ecuadorHigh"]
-      },
-      "EE": {
-        "country": "Estonia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["estoniaLow", "estoniaHigh"]
-      },
-      "EG": {
-        "country": "Egypt",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["egyptLow", "egyptHigh"]
-      },
-      "EH": {
-        "country": "Western Sahara",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "ER": {
-        "country": "Eritrea",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "ES": {
-        "country": "Spain",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["spainLow", "spainHigh", "spainProvincesLow", "spainProvincesHigh"]
-      },
-      "ET": {
-        "country": "Ethiopia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "FI": {
-        "country": "Finland",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["finlandLow", "finlandHigh"]
-      },
-      "FJ": {
-        "country": "Fiji",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": ["fijiEastLow", "fijiEastHigh", "fijiWestLow", "fijiWestHigh"]
-      },
-      "FK": {
-        "country": "Falkland Islands (Malvinas)",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": []
-      },
-      "FM": {
-        "country": "Micronesia, Federated States of",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "FO": {
-        "country": "Faroe Islands",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["faroeIslandsLow", "faroeIslandsHigh"]
-      },
-      "FR": {
-        "country": "France",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["franceLow", "franceHigh", "franceDepartmentsLow", "franceDepartmentsHigh"]
-      },
-      "GA": {
-        "country": "Gabon",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["gabonLow", "gabonHigh"]
-      },
-      "GB": {
-        "country": "United Kingdom",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["ukLow", "ukHigh", "ukCountiesLow", "ukCountiesHigh"]
-      },
-      "GB-CHA": {
-        "country": "Channel Islands",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["channelIslandsLow", "channelIslandsHigh"]
-      },
-      "GD": {
-        "country": "Grenada",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "GE": {
-        "country": "Georgia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["georgiaLow", "georgiaHigh", "georgiaSouthOssetiaLow", "georgiaSouthOssetiaHigh"]
-      },
-      "GF": {
-        "country": "French Guiana",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["frenchGuianaLow", "frenchGuianaHigh"]
-      },
-      "GG": {
-        "country": "Guernsey",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "GH": {
-        "country": "Ghana",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "GI": {
-        "country": "Gibraltar",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "GL": {
-        "country": "Greenland",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["greenlandLow", "greenlandHigh"]
-      },
-      "GM": {
-        "country": "Gambia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "GN": {
-        "country": "Guinea",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["guineaLow", "guineaHigh"]
-      },
-      "GP": {
-        "country": "Guadeloupe",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "GQ": {
-        "country": "Equatorial Guinea",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["equatorialGuineaLow", "equatorialGuineaHigh"]
-      },
-      "GR": {
-        "country": "Greece",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["greeceLow", "greeceHigh"]
-      },
-      "GS": {
-        "country": "South Georgia and the South Sandwich Islands",
-        "continent_code": "AN",
-        "continent": "Antarctica",
-        "maps": []
-      },
-      "GT": {
-        "country": "Guatemala",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "GU": {
-        "country": "Guam",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "GW": {
-        "country": "Guinea-Bissau",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "GY": {
-        "country": "Guyana",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": []
-      },
-      "HK": {
-        "country": "Hong Kong",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["hongKongLow", "hongKongHigh"]
-      },
-      "HM": {
-        "country": "Heard Island and McDonald Islands",
-        "continent_code": "AN",
-        "continent": "Antarctica",
-        "maps": []
-      },
-      "HN": {
-        "country": "Honduras",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["hondurasLow", "hondurasHigh"]
-      },
-      "HR": {
-        "country": "Croatia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["croatiaLow", "croatiaHigh"]
-      },
-      "HT": {
-        "country": "Haiti",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "HU": {
-        "country": "Hungary",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["hungaryLow", "hungaryHigh"]
-      },
-      "ID": {
-        "country": "Indonesia",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["indonesiaLow", "indonesiaHigh"]
-      },
-      "IE": {
-        "country": "Ireland",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["irelandLow", "irelandHigh"]
-      },
-      "IL": {
-        "country": "Israel",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["israelLow", "israelHigh", "israelPalestineLow", "israelPalestineHigh"]
-      },
-      "IM": {
-        "country": "Isle of Man",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "IN": {
-        "country": "India",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["indiaLow", "indiaHigh"]
-      },
-      "IO": {
-        "country": "British Indian Ocean Territory",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "IQ": {
-        "country": "Iraq",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "IR": {
-        "country": "Iran, Islamic Republic of",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "IS": {
-        "country": "Iceland",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["icelandLow", "icelandHigh"]
-      },
-      "IT": {
-        "country": "Italy",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["italyLow", "italyHigh"]
-      },
-      "JE": {
-        "country": "Jersey",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "JM": {
-        "country": "Jamaica",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "JO": {
-        "country": "Jordan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "JP": {
-        "country": "Japan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["japanLow", "japanHigh"]
-      },
-      "KE": {
-        "country": "Kenya",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["kenyaLow", "kenyaHigh"]
-      },
-      "KG": {
-        "country": "Kyrgyzstan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["kyrgyzstanLow", "kyrgyzstanHigh"]
-      },
-      "KH": {
-        "country": "Cambodia",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["cambodiaLow", "cambodiaHigh"]
-      },
-      "KI": {
-        "country": "Kiribati",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "KM": {
-        "country": "Comoros",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "KN": {
-        "country": "Saint Kitts and Nevis",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "KP": {
-        "country": "Korea, Democratic People's Republic of",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["northKoreaLow", "northKoreaHigh"]
-      },
-      "KR": {
-        "country": "Korea, Republic of",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["southKoreaLow", "southKoreaHigh"]
-      },
-      "KT": {
-        "country": "Saint Kitts and Nevis",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["stKittsNevisLow", "stKittsNevisHigh"]
-      },
-      "KW": {
-        "country": "Kuwait",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "KY": {
-        "country": "Cayman Islands",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "KZ": {
-        "country": "Kazakhstan",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["kazakhstanLow", "kazakhstanHigh"]
-      },
-      "LA": {
-        "country": "Lao People's Democratic Republic",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "LB": {
-        "country": "Lebanon",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "LC": {
-        "country": "Saint Lucia",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["saintLuciaLow", "saintLuciaHigh"]
-      },
-      "LI": {
-        "country": "Liechtenstein",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["liechtensteinLow", "liechtensteinHigh"]
-      },
-      "LK": {
-        "country": "Sri Lanka",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["sriLankaLow", "sriLankaHigh"]
-      },
-      "LR": {
-        "country": "Liberia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "LS": {
-        "country": "Lesotho",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "LT": {
-        "country": "Lithuania",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["lithuaniaLow", "lithuaniaHigh"]
-      },
-      "LU": {
-        "country": "Luxembourg",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "LV": {
-        "country": "Latvia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["latviaLow", "latviaHigh"]
-      },
-      "LY": {
-        "country": "Libya",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "MA": {
-        "country": "Morocco",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["moroccoLow", "moroccoHigh"]
-      },
-      "MC": {
-        "country": "Monaco",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "MD": {
-        "country": "Moldova, Republic of",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["moldovaLow", "moldovaHigh"]
-      },
-      "ME": {
-        "country": "Montenegro",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "MF": {
-        "country": "Saint Martin (French Part)",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "MG": {
-        "country": "Madagascar",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "MH": {
-        "country": "Marshall Islands",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "MK": {
-        "country": "North Macedonia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": []
-      },
-      "ML": {
-        "country": "Mali",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["maliLow", "maliHigh"]
-      },
-      "MM": {
-        "country": "Myanmar",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "MN": {
-        "country": "Mongolia",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["mongoliaLow", "mongoliaHigh"]
-      },
-      "MO": {
-        "country": "Macao",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "MP": {
-        "country": "Northern Mariana Islands",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "MQ": {
-        "country": "Martinique",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "MR": {
-        "country": "Mauritania",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "MS": {
-        "country": "Montserrat",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "MT": {
-        "country": "Malta",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["maltaLow", "maltaHigh"]
-      },
-      "MU": {
-        "country": "Mauritius",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "MV": {
-        "country": "Maldives",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["maldivesLow", "maldivesHigh", "maldivesIslandsLow", "maldivesIslandsHigh"]
-      },
-      "MW": {
-        "country": "Malawi",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "MX": {
-        "country": "Mexico",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["mexicoLow", "mexicoHigh"]
-      },
-      "MY": {
-        "country": "Malaysia",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["malaysiaLow", "malaysiaHigh"]
-      },
-      "MZ": {
-        "country": "Mozambique",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "NA": {
-        "country": "Namibia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["namibiaLow", "namibiaHigh"]
-      },
-      "NC": {
-        "country": "New Caledonia",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "NE": {
-        "country": "Niger",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "NF": {
-        "country": "Norfolk Island",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "NG": {
-        "country": "Nigeria",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["nigeriaLow", "nigeriaHigh"]
-      },
-      "NI": {
-        "country": "Nicaragua",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["nicaraguaLow", "nicaraguaHigh"]
-      },
-      "NL": {
-        "country": "Netherlands",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["netherlandsLow", "netherlandsHigh"]
-      },
-      "NO": {
-        "country": "Norway",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["norwayLow", "norwayHigh"]
-      },
-      "NP": {
-        "country": "Nepal",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["nepalLow", "nepalHigh"]
-      },
-      "NR": {
-        "country": "Nauru",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "NU": {
-        "country": "Niue",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "NZ": {
-        "country": "New Zealand",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": ["newZealandLow", "newZealandHigh"]
-      },
-      "OM": {
-        "country": "Oman",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["omanLow", "omanHigh"]
-      },
-      "PA": {
-        "country": "Panama",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["panamaLow", "panamaHigh"]
-      },
-      "PE": {
-        "country": "Peru",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["peruLow", "peruHigh"]
-      },
-      "PF": {
-        "country": "French Polynesia",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "PG": {
-        "country": "Papua New Guinea",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "PH": {
-        "country": "Philippines",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["philippinesLow", "philippinesHigh"]
-      },
-      "PK": {
-        "country": "Pakistan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["pakistanLow", "pakistanHigh"]
-      },
-      "PL": {
-        "country": "Poland",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["polandLow", "polandHigh"]
-      },
-      "PM": {
-        "country": "Saint Pierre and Miquelon",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["stPierreMiquelonLow", "stPierreMiquelonHigh"]
-      },
-      "PN": {
-        "country": "Pitcairn",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "PR": {
-        "country": "Puerto Rico",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["puertoRicoLow", "puertoRicoHigh"]
-      },
-      "PS": {
-        "country": "Palestinian, State of",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["palestineLow", "palestineHigh"]
-      },
-      "PT": {
-        "country": "Portugal",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["portugalLow", "portugalHigh", "portugalRegionsLow", "portugalRegionsHigh"]
-      },
-      "PW": {
-        "country": "Palau",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "PY": {
-        "country": "Paraguay",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["paraguayLow", "paraguayHigh"]
-      },
-      "QA": {
-        "country": "Qatar",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["qatarLow", "qatarHigh"]
-      },
-      "RE": {
-        "country": "Reunion",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "RO": {
-        "country": "Romania",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["romaniaLow", "romaniaHigh"]
-      },
-      "RS": {
-        "country": "Serbia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["serbiaLow", "serbiaHigh", "serbiaNoKosovoLow", "serbiaNoKosovoHigh"]
-      },
-      "RU": {
-        "country": "Russian Federation",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["russiaLow", "russiaHigh", "russiaCrimeaLow", "russiaCrimeaHigh"]
-      },
-      "RW": {
-        "country": "Rwanda",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "SA": {
-        "country": "Saudi Arabia",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["saudiArabiaLow", "saudiArabiaHigh"]
-      },
-      "SB": {
-        "country": "Solomon Islands",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": ["solomonIslandsLow", "solomonIslandsHigh"]
-      },
-      "SC": {
-        "country": "Seychelles",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["seychellesLow", "seychellesHigh"]
-      },
-      "SD": {
-        "country": "Sudan",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["sudanLow", "sudanHigh"]
-      },
-      "SE": {
-        "country": "Sweden",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["swedenLow", "swedenHigh"]
-      },
-      "SG": {
-        "country": "Singapore",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["singaporeLow", "singaporeHigh"]
-      },
-      "SH": {
-        "country": "Saint Helena, Ascension and Tristan da Cunha",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["saintHelenaLow", "saintHelenaHigh"]
-      },
-      "SI": {
-        "country": "Slovenia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["sloveniaLow", "sloveniaHigh", "sloveniaRegionsLow", "sloveniaRegionsHigh"]
-      },
-      "SJ": {
-        "country": "Svalbard and Jan Mayen",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["svalbardLow", "svalbardHigh"]
-      },
-      "SK": {
-        "country": "Slovakia",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["slovakiaLow", "slovakiaHigh"]
-      },
-      "SL": {
-        "country": "Sierra Leone",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "SM": {
-        "country": "San Marino",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["sanMarinoLow", "sanMarinoHigh"]
-      },
-      "SN": {
-        "country": "Senegal",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["senegalLow", "senegalHigh"]
-      },
-      "SO": {
-        "country": "Somalia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["somaliaLow", "somaliaHigh"]
-      },
-      "SR": {
-        "country": "Suriname",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": []
-      },
-      "SS": {
-        "country": "South Sudan",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "ST": {
-        "country": "Sao Tome and Principe",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["saoTomePrincipeLow", "saoTomePrincipeHigh"]
-      },
-      "SV": {
-        "country": "El Salvador",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["elSalvadorLow", "elSalvadorHigh"]
-      },
-      "SX": {
-        "country": "Sint Maarten (Dutch Part)",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "SY": {
-        "country": "Syrian Arab Republic",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["syriaLow", "syriaHigh"]
-      },
-      "SZ": {
-        "country": "Swaziland",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["eswatiniLow", "eswatiniHigh"]
-      },
-      "TC": {
-        "country": "Turks and Caicos Islands",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "TD": {
-        "country": "Chad",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["chadLow", "chadHigh"]
-      },
-      "TF": {
-        "country": "French Southern Territories",
-        "continent_code": "AN",
-        "continent": "Antarctica",
-        "maps": []
-      },
-      "TG": {
-        "country": "Togo",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "TH": {
-        "country": "Thailand",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["thailandLow", "thailandHigh"]
-      },
-      "TJ": {
-        "country": "Tajikistan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["tajikistanLow", "tajikistanHigh"]
-      },
-      "TK": {
-        "country": "Tokelau",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "TL": {
-        "country": "Timor-Leste",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "TM": {
-        "country": "Turkmenistan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "TN": {
-        "country": "Tunisia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["tunisiaLow", "tunisiaHigh"]
-      },
-      "TO": {
-        "country": "Tonga",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "TR": {
-        "country": "Turkey",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["turkeyLow", "turkeyHigh"]
-      },
-      "TT": {
-        "country": "Trinidad and Tobago",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "TV": {
-        "country": "Tuvalu",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "TW": {
-        "country": "Taiwan, Province of China",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": []
-      },
-      "TZ": {
-        "country": "Tanzania, United Republic of",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["tanzaniaLow", "tanzaniaHigh"]
-      },
-      "UA": {
-        "country": "Ukraine",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["ukraineLow", "ukraineHigh"]
-      },
-      "UG": {
-        "country": "Uganda",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "UM": {
-        "country": "United States Minor Outlying Islands",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "US": {
-        "country": "United States",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["usaLow", "usaHigh", "usaTerritoriesLow", "usaTerritoriesHigh", "usaTerritories2Low", "usaTerritories2High"]
-      },
-      "UY": {
-        "country": "Uruguay",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": []
-      },
-      "UZ": {
-        "country": "Uzbekistan",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["uzbekinstanLow", "uzbekinstanHigh"]
-      },
-      "VA": {
-        "country": "Holy See (Vatican City State)",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["vaticanLow", "vaticanHigh"]
-      },
-      "VC": {
-        "country": "Saint Vincent and the Grenadines",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": ["saintVincentLow", "saintVincentHigh"]
-      },
-      "VE": {
-        "country": "Venezuela, Bolivarian Republic of",
-        "continent_code": "SA",
-        "continent": "South America",
-        "maps": ["venezuelaLow", "venezuelaHigh"]
-      },
-      "VG": {
-        "country": "Virgin Islands, British",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "VI": {
-        "country": "Virgin Islands, U.S.",
-        "continent_code": "NA",
-        "continent": "North America",
-        "maps": []
-      },
-      "VN": {
-        "country": "Viet Nam",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["vietnamLow", "vietnamHigh"]
-      },
-      "VU": {
-        "country": "Vanuatu",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "WF": {
-        "country": "Wallis and Futuna",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": []
-      },
-      "WS": {
-        "country": "Samoa",
-        "continent_code": "OC",
-        "continent": "Oceania",
-        "maps": ["samoaLow", "samoaHigh"]
-      },
-      "YE": {
-        "country": "Yemen",
-        "continent_code": "AS",
-        "continent": "Asia",
-        "maps": ["yemenLow", "yemenHigh"]
-      },
-      "YT": {
-        "country": "Mayotte",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": []
-      },
-      "ZA": {
-        "country": "South Africa",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["southAfricaLow", "southAfricaHigh"]
-      },
-      "ZM": {
-        "country": "Zambia",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["zambiaLow", "zambiaHigh"]
-      },
-      "ZW": {
-        "country": "Zimbabwe",
-        "continent_code": "AF",
-        "continent": "Africa",
-        "maps": ["zimbabweLow", "zimbabweHigh"]
-      },
-      "XK": {
-        "country": "Kosovo",
-        "continent_code": "EU",
-        "continent": "Europe",
-        "maps": ["kosovoLow", "kosovoHigh"]
-      }
-    };
-
-
-    var continents = {
-      "AF": 0,
-      "AN": 1,
-      "AS": 2,
-      "EU": 3,
-      "NA": 4,
-      "OC": 5,
-      "SA": 6
-    }
-
-    //
-    //
-    // STUFF FOR BAR CHART
-    //
-    /*
-var series = chartBar.series.push(new am4charts.FunnelSeries());
-series.colors.step = 2;
-series.dataFields.value = "value";
-series.dataFields.category = "name";
-series.alignLabels = true;
-
-series.labelsContainer.paddingLeft = 15;
-series.labelsContainer.width = 200;
-
-//series.orientation = "horizontal";
-//series.bottomRatio = 1;
-
-chartBar.legend = new am4charts.Legend();
-chartBar.legend.position = "left";
-chartBar.legend.valign = "bottom";
-chartBar.legend.margin(5,5,20,5);
-*/
-
-    //
-    //
-    // STUFF FOR MAP CHART
-    //
-
-    // Create map instance
-    var chartMap = am4core.create("globeChart", am4maps.MapChart);
-    chartMap.projection = new am4maps.projections.Miller();
-
-    // Create map polygon series for world map
-    var worldSeries = chartMap.series.push(new am4maps.MapPolygonSeries());
-    worldSeries.useGeodata = true;
-    worldSeries.geodata = am4geodata_worldLow;
-    worldSeries.exclude = ["AQ"];
-
-    var worldPolygon = worldSeries.mapPolygons.template;
-    worldPolygon.tooltipText = "{name}";
-    worldPolygon.nonScalingStroke = true;
-    worldPolygon.strokeOpacity = 0.5;
-    worldPolygon.fill = am4core.color("#eee");
-    worldPolygon.propertyFields.fill = "color";
-
-    var hs = worldPolygon.states.create("hover");
-    hs.properties.fill = chartMap.colors.getIndex(1);
-
-
-    // Create country specific series (but hide it for now)
-    var countrySeries = chartMap.series.push(new am4maps.MapPolygonSeries());
-    countrySeries.useGeodata = true;
-    countrySeries.hide();
-    countrySeries.geodataSource.events.on("done", function (ev) {
-      worldSeries.hide();
-      countrySeries.show();
-    });
-
-    var countryPolygon = countrySeries.mapPolygons.template;
-    countryPolygon.tooltipText = "{name}";
-    countryPolygon.nonScalingStroke = true;
-    countryPolygon.strokeOpacity = 0.5;
-    countryPolygon.fill = am4core.color("#eee");
-
-    var hs = countryPolygon.states.create("hover");
-    hs.properties.fill = chartMap.colors.getIndex(1);
-
-    // Set up click events
-    worldPolygon.events.on("hit", function (ev) {
-      ev.target.series.chart.zoomToMapObject(ev.target);
-      var map = ev.target.dataItem.dataContext.map;
-      if (map) {
-        ev.target.isHover = false;
-        countrySeries.geodataSource.url = "https://www.amcharts.com/lib/4/geodata/json/" + map + ".json";
-        countrySeries.geodataSource.load();
-      }
-    });
-
-    // Set up data for countries
-    var data = [];
-    for (var id in countries) {
-      if (countries.hasOwnProperty(id)) {
-        var country = countries[id];
-        if (country.maps.length) {
-          data.push({
-            id: id,
-            color: chartMap.colors.getIndex(continents[country.continent_code]),
-            map: country.maps[0]
-          });
-        }
-      }
-    }
-    worldSeries.data = data;
-
-    // Zoom control
-    chartMap.zoomControl = new am4maps.ZoomControl();
-
-    var homeButton = new am4core.Button();
-    homeButton.events.on("hit", function () {
-      worldSeries.show();
-      countrySeries.hide();
-      chartMap.goHome();
-    });
-
-    homeButton.icon = new am4core.Sprite();
-    homeButton.padding(7, 5, 7, 5);
-    homeButton.width = 30;
-    homeButton.icon.path = "M16,8 L14,8 L14,16 L10,16 L10,10 L6,10 L6,16 L2,16 L2,8 L0,8 L8,0 L16,8 Z M16,8";
-    homeButton.marginBottom = 10;
-    homeButton.parent = chartMap.zoomControl;
-    homeButton.insertBefore(chartMap.zoomControl.plusButton);
-
-    // map chart end
-  }); // end am4core.ready() 
-</script>
-<script>
-  // line chart
-  am4core.ready(function () {
-
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
-
-    var chart = am4core.create("lineChart", am4charts.XYChart);
-
-    var data = [];
-    var value = 50;
-    for (let i = 0; i < 300; i++) {
-      let date = new Date();
-      date.setHours(0, 0, 0, 0);
-      date.setDate(i);
-      value -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-      data.push({ date: date, value: value });
-    }
-
-    chart.data = data;
-
-    // Create axes
-    var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.minGridDistance = 60;
-
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-
-    // Create series
-    var series = chart.series.push(new am4charts.LineSeries());
-    series.dataFields.valueY = "value";
-    series.dataFields.dateX = "date";
-    series.tooltipText = "{value}"
-
-    series.tooltip.pointerOrientation = "vertical";
-
-    chart.cursor = new am4charts.XYCursor();
-    chart.cursor.snapToSeries = series;
-    chart.cursor.xAxis = dateAxis;
-
-    //chart.scrollbarY = new am4core.Scrollbar();
-    chart.scrollbarX = new am4core.Scrollbar();
-
-  }); // end am4core.ready()
-    // line chart end
-</script>
-
-<!-- Chart code -->
-<script>
-    $("#cat-pills a").click(function () { 
-      
-      /* Create chart instance */
-      chart.updateCurrentData;
-      /* Create chart instance */
-      chartEnergy.updateCurrentData;
-      /* Create chart instance */
-      chartEnergyCit.updateCurrentData;
-
-    });// radar chart end
-
-    am4core.ready(function() {
-    
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
-    
-    /* Create chart instance */
-    var chart = am4core.create("radar-transport", am4charts.RadarChart);
-    /* Create chart instance */
-    var chartEnergy = am4core.create("radar-energy", am4charts.RadarChart);
-    /* Create chart instance */
-    var chartEnergyCit = am4core.create("radar-energy-cit", am4charts.RadarChart);
-    
-    /* Add data */
-    chart.data = [{
-      "country": "Lithuania",
-      "litres": 6767000
-    }, {
-      "country": "Czechia",
-      "litres": 11124000
-    }, {
-      "country": "Ireland",
-      "litres": 12167000
-    }, {
-      "country": "Germany",
-      "litres": 82354555
-    }, {
-      "country": "Australia",
-      "litres": 12657234
-    }, {
-      "country": "Austria",
-      "litres": 22312123
-    }, {
-      "country": "UK",
-      "litres": 78123123
-    }, {
-      "country": "Belgium",
-      "litres": 9123857
-    }, {
-      "country": "The Netherlands",
-      "litres": 28123412
-    }];
-    chartEnergy.data = [{
-      "country": "Lithuania",
-      "litres": 1.3
-    }, {
-      "country": "Czechia",
-      "litres": 1.1
-    }, {
-      "country": "Ireland",
-      "litres": 1.2  
-    }];
-    chartEnergyCit.data = [{
-      "country": "Lithuania",
-      "litres": 1.3
-    }, {
-      "country": "Czechia",
-      "litres": 1.1
-    }, {
-      "country": "Ireland",
-      "litres": 1.2  
-    }];
-
-    /* Create axes */
-    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    var categoryAxisEnergy = chartEnergy.xAxes.push(new am4charts.CategoryAxis());
-    var categoryAxisEnergyCit = chartEnergyCit.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "country";
-    categoryAxisEnergy.dataFields.category = "country";
-    categoryAxisEnergyCit.dataFields.category = "country";
-    
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    var valueAxisEnergy = chartEnergy.yAxes.push(new am4charts.ValueAxis());
-    var valueAxisEnergyCit = chartEnergyCit.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.renderer.axisFills.template.fill = chart.colors.getIndex(2);
-    valueAxisEnergy.renderer.axisFills.template.fill = chartEnergy.colors.getIndex(2);
-    valueAxisEnergyCit.renderer.axisFills.template.fill = chartEnergyCit.colors.getIndex(2);
-    valueAxis.renderer.axisFills.template.fillOpacity = 0.05;
-    valueAxisEnergy.renderer.axisFills.template.fillOpacity = 0.05;
-    valueAxisEnergyCit.renderer.axisFills.template.fillOpacity = 0.05;
-    
-    /* Create and configure series */
-    var series = chart.series.push(new am4charts.RadarSeries());
-    series.dataFields.valueY = "litres";
-    series.dataFields.categoryX = "country";
-    series.name = "Sales";
-    series.strokeWidth = 3;
-     
-    /* Create and configure series */
-    var seriesEnergy = chartEnergy.series.push(new am4charts.RadarSeries()); 
-    seriesEnergy.dataFields.valueY = "litres";
-    seriesEnergy.dataFields.categoryX = "country";
-    seriesEnergy.name = "Sales";
-    seriesEnergy.strokeWidth = 3;
-     
-    /* Create and configure series */
-    var seriesEnergyCit = chartEnergyCit.series.push(new am4charts.RadarSeries()); 
-    seriesEnergyCit.dataFields.valueY = "litres";
-    seriesEnergyCit.dataFields.categoryX = "country";
-    seriesEnergyCit.name = "Sales";
-    seriesEnergyCit.strokeWidth = 3;
-    
-    }); // end am4core.ready()
-</script>
+<!-- JS stuff -->
+<script src="https://glanonim.com/Archive/visualization/js/main.js"></script>
 
 
 </html>
