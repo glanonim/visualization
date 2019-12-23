@@ -47,9 +47,9 @@
 
     <div class="tab-content">
       <div class="tab-pane fade show active" id="nav-map" role="tabpanel" aria-labelledby="nav-map-tab">
-         <!-- Start of map -->
+        <!-- Start of map -->
         <div class="position-relative border mt-3 px-0">
-             
+
           <!-- Show side panel -->
           <button type="button" id="showSidePanel" class="btn btn-sm btn-primary position-absolute mt-3 ml-3"
             title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1">chevron_right</i></button>
@@ -113,13 +113,14 @@
             </div>
           </div>
 
-           <!-- Generate map -->
+          <!-- Generate map -->
           <div class="chart" id="globeChart">
           </div>
-          
-           <!-- Button to reset countries -->
-          <button type="button" class="btn btn-sm btn-light position-absolute border" id="resetCountries" title="Reset picked countries"
-            data-toggle="tooltip"><i class="material-icons ic-sm pt-1 ic-sm">cached</i></button>
+
+          <!-- Button to reset countries -->
+          <button type="button" class="btn btn-sm btn-light position-absolute border" id="resetCountries"
+            title="Reset picked countries" data-toggle="tooltip"><i
+              class="material-icons ic-sm pt-1 ic-sm">cached</i></button>
         </div>
         <div class="row mt-1 py-3">
           <div class="col">
@@ -230,7 +231,7 @@
                 <a class="nav-link" id="cat-energy-tab" data-toggle="pill" href="#cat-energy" role="tab"
                   aria-controls="cat-energy" aria-selected="false">Energy</a>
                 <a class="nav-link" id="cat-industry-tab" data-toggle="pill" href="#cat-industry" role="tab"
-                  aria-controls="cat-industry" aria-selected="false">Industry & Residential</a>
+                  aria-controls="cat-industry" aria-selected="false">Industry & Residence</a>
                 <a class="nav-link" id="cat-land-tab" data-toggle="pill" href="#cat-land" role="tab"
                   aria-controls="cat-land" aria-selected="false">Land</a>
               </div>
@@ -240,7 +241,8 @@
                 <div class="tab-pane fade show active" id="cat-transport" role="tabpanel"
                   aria-labelledby="cat-transport-tab">
                   <h3>CO<sub>2</sub> emissions from transport (% of total fuel combustion) </h3>
-                  <p class="lead">CO<sub>2</sub> emissions from transport contains emissions from the combustion of fuel for all
+                  <p class="lead">CO<sub>2</sub> emissions from transport contains emissions from the combustion of fuel
+                    for all
                     transport activity, regardless of the sector, except for international marine bunkers and
                     international aviation. This includes domestic aviation, domestic navigation, road, rail and
                     pipeline
@@ -285,13 +287,15 @@
 
                   <h3 class="mt-5">CO<sub>2</sub> emissions from electricity and heat production, total (% of total fuel
                     combustion)</h3>
-                  <p class="lead">CO<sub>2</sub> emissions from electricity and heat production is the sum of three IEA categories
+                  <p class="lead">CO<sub>2</sub> emissions from electricity and heat production is the sum of three IEA
+                    categories
                     of CO2 emissions:
                     (1) Main Activity Producer Electricity and Heat which contains the sum of emissions from main
                     activity producer electricity generation, combined heat and power generation and heat plants. Main
                     activity producers (formerly known as public utilities) are defined as those undertakings whose
                     primary activity is to supply the public. They may be publicly or privately owned. This corresponds
-                    to IPCC Source/Sink Category 1 A 1 a. For the CO<sub>2</sub> emissions from fuel combustion (summary) file,
+                    to IPCC Source/Sink Category 1 A 1 a. For the CO<sub>2</sub> emissions from fuel combustion
+                    (summary) file,
                     emissions from own on-site use of fuel in power plants (EPOWERPLT) are also included.
                     (2) Unallocated Autoproducers which contains the emissions from the generation of electricity and/or
                     heat by autoproducers. Autoproducers are defined as undertakings that generate electricity and/or
@@ -305,50 +309,70 @@
                   <a href="https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS"><small class="text-muted">Data Source:
                       IEA Statistics © OECD/IEA 2014</small></a>
 
-                      
+
                   <h3 class="mt-5">CO<sub>2</sub> from Total fossil fuels and cement (Total)</h3>
-                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
+                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial
+                    processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
                   <div class="radar" id="radar-e4"></div>
-                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small class="text-muted">Data Source: Global Carbon Project</small></a>
+                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small
+                      class="text-muted">Data Source: Global Carbon Project</small></a>
 
                   <h3 class="mt-5">CO<sub>2</sub> from Total fossil fuels and cement per Capita</h3>
-                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
+                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial
+                    processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
                   <div class="radar" id="radar-e5"></div>
-                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small class="text-muted">Data Source: Global Carbon Project</small></a>
+                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small
+                      class="text-muted">Data Source: Global Carbon Project</small></a>
 
                   <h3 class="mt-5">CO<sub>2</sub> from Total fossil fuels and cement per GDP</h3>
-                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
+                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial
+                    processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
                   <div class="radar" id="radar-e6"></div>
-                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small class="text-muted">Data Source: Global Carbon Project</small></a>
+                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small
+                      class="text-muted">Data Source: Global Carbon Project</small></a>
 
                 </div>
                 <div class="tab-pane fade" id="cat-industry" role="tabpanel" aria-labelledby="cat-industry-tab">
-             
-                  <h3 class="">CO<sub>2</sub> emissions from manufacturing industries and construction (% of total fuel combustion)</h3>
-                  <p class="lead">CO<sub>2</sub> emissions from manufacturing industries and construction contains the emissions from combustion of fuels in industry.  </p>
-                  <div class="radar" id="radar-i1"></div>
-                  <a href="https://data.worldbank.org/indicator/EN.CO2.MANF.ZS"><small class="text-muted">Data Source: IEA Statistics &copy; OECD/IEA 2014</small></a>
 
-                  <h3 class="mt-5">CO<sub>2</sub> emissions from residential buildings and commercial and public services (% of total fuel combustion)</h3>
-                  <p class="lead">CO<sub>2</sub> emissions from residential buildings and commercial and public services contains all emissions from fuel combustion in households. </p>
+                  <h3 class="">CO<sub>2</sub> emissions from manufacturing industries and construction (% of total fuel
+                    combustion)</h3>
+                  <p class="lead">CO<sub>2</sub> emissions from manufacturing industries and construction contains the
+                    emissions from combustion of fuels in industry. </p>
+                  <div class="radar" id="radar-i1"></div>
+                  <a href="https://data.worldbank.org/indicator/EN.CO2.MANF.ZS"><small class="text-muted">Data Source:
+                      IEA Statistics &copy; OECD/IEA 2014</small></a>
+
+                  <h3 class="mt-5">CO<sub>2</sub> emissions from residential buildings and commercial and public
+                    services (% of total fuel combustion)</h3>
+                  <p class="lead">CO<sub>2</sub> emissions from residential buildings and commercial and public services
+                    contains all emissions from fuel combustion in households. </p>
                   <div class="radar" id="radar-i2"></div>
-                  <a href="https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS"><small class="text-muted">Data Source: IEA Statistics &copy; OECD/IEA 2014 ( iea.org/stats/index.asp ), subject to iea.org/t&c/termsandconditions</small></a>
+                  <a href="https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS"><small class="text-muted">Data Source:
+                      IEA Statistics &copy; OECD/IEA 2014 ( iea.org/stats/index.asp ), subject to
+                      iea.org/t&c/termsandconditions</small></a>
 
 
 
                 </div>
 
                 <div class="tab-pane fade" id="cat-land" role="tabpanel" aria-labelledby="cat-land-tab">
-             
+
                   <h3 class="">Agricultural methane emissions (thousand metric tons of CO<sub>2</sub> equivalent)</h3>
-                  <p class="lead">Agricultural methane emissions are emissions from animals, animal waste, rice production, agricultural waste burning (nonenergy, on-site), and savannah burning. </p>
+                  <p class="lead">Agricultural methane emissions are emissions from animals, animal waste, rice
+                    production, agricultural waste burning (nonenergy, on-site), and savannah burning. </p>
                   <div class="radar" id="radar-l1"></div>
-                  <a href="https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE"><small class="text-muted">Data Source: European Commission, Joint Research Centre ( JRC )/Netherlands Environmental Assessment Agency ( PBL ). Emission Database for Global Atmospheric Research ( EDGAR ): edgar.jrc.ec.europa.eu</small></a>
+                  <a href="https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE"><small class="text-muted">Data
+                      Source: European Commission, Joint Research Centre ( JRC )/Netherlands Environmental Assessment
+                      Agency ( PBL ). Emission Database for Global Atmospheric Research ( EDGAR ):
+                      edgar.jrc.ec.europa.eu</small></a>
 
                   <h3 class="mt-5">Forest area (% of land area)</h3>
-                  <p class="lead">Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether productive or not, and excludes tree stands in agricultural production systems (for example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens. </p>
+                  <p class="lead">Forest area is land under natural or planted stands of trees of at least 5 meters in
+                    situ, whether productive or not, and excludes tree stands in agricultural production systems (for
+                    example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens. </p>
                   <div class="radar" id="radar-l2"></div>
-                  <a href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS"><small class="text-muted">Data Source: Food and Agriculture Organization, electronic files and web site.</small></a>
+                  <a href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS"><small class="text-muted">Data Source:
+                      Food and Agriculture Organization, electronic files and web site.</small></a>
 
 
 
@@ -362,7 +386,80 @@
       </div>
 
       <div class="tab-pane fade" id="nav-timespan" role="tabpanel" aria-labelledby="nav-timespan-tab">
-        <h1>Timespan view</h1>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-3 pt-1" id="chartLine">
+            <div class="row my-3">
+              <div class="col">
+                <h3 class="">Select chart</h3>
+              </div>
+              <div class="col-3">
+                <button type="button" id="hideLinePanel" class="btn btn-sm btn-primary" title="Hide this panel"
+                  data-toggle="tooltip"><i class="material-icons pt-1">chevron_left</i></button>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <ul class="list-group mb-3">
+                  <!-- Display countries to pick -->
+                  <h5 class="mt-3">Transportation</h5>
+                  <li class="list-group-item list-group-item-action active">
+                    CO<sub>2</sub> emissions from transport (% of total fuel combustion)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Goods transport
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Air passengers per country
+                  </li>
+                  <h5 class="mt-3">Energy</h5>
+                  <li class="list-group-item list-group-item-action">
+                    Energy use (kg of oil equivalent per capita)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Electricity production from oil, gas and coal sources (% of total)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    CO<sub>2</sub> emissions from electricity and heat production, total (% of total fuel
+                    combustion)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    CO<sub>2</sub> from Total fossil fuels and cement (Total)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    CO<sub>2</sub> from Total fossil fuels and cement per Capita
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    CO<sub>2</sub> from Total fossil fuels and cement per GDP
+                  </li>
+                  <h5 class="mt-3">Industry & Residence</h5>
+                  <li class="list-group-item list-group-item-action">
+                    CO<sub>2</sub> emissions from manufacturing industries and construction (% of total fuel
+                    combustion)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    CO<sub>2</sub> emissions from residential buildings and commercial and public
+                    services (% of total fuel combustion)
+                  </li>
+
+                  <h5 class="mt-3">Land</h5>
+                  <li class="list-group-item list-group-item-action">
+                    Agricultural methane emissions (thousand metric tons of CO<sub>2</sub> equivalent)
+                  </li>
+                  <li class="list-group-item list-group-item-action">
+                    Forest area (% of land area)
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col position-relative"> 
+            <button type="button" id="showLinePanel" class="btn btn-sm btn-primary mb-3 mx-3"
+            title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1">chevron_right</i></button>
+            <div class="chart" id="linediv"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
