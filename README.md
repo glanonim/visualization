@@ -19,7 +19,22 @@ The motivation of this project is the current discussion about global warming. C
 4. Project Objectives and Goals. Provide the primary questions you are trying to answer with your visualisation. What would you like to learn and accomplish? List the benefits.
 5. Data. From where and how are you collecting your data? If appropriate, provide a link to your data sources.
 6. Data Processing. Do you expect to do substantial data cleanup? What quantities do you plan to derive from your data? How would data processing be implemented?
-7. Visualisation Design. How will you display your data? Provide some general ideas that you have for the visualisation design. Develop three alternative prototype designs for your visualisation. Discuss the pros and cons of each design. Create one final design that incorporates the best of your three designs. Describe your designs and justify your choices of visual encodings. We recommend you use the 8. Five Design Sheet Methodology (fds.design).
+7. Visualisation Design. How will you display your data? Provide some general ideas that you have for the visualisation design. Develop three alternative prototype designs for your visualisation. Discuss the pros and cons of each design. Create one final design that incorporates the best of your three designs. Describe your designs and justify your choices of visual encodings. We recommend you use the
+The visual design was developed by considering Edward
+R. Tufte's heuristics and principles.
+"Graphical excellent is that which gives to the
+viewer the greatest number of ideas in the shortest time with the least ink in the
+smallest space."\cite{Tufte2001} The least ink ratio hints to one of Tufte's heuristics, which is "maximize the data Ink ratio. \\
+$\frac{data-ink}{total ink used to print the graphic (data-ink + non data-ink)}$
+The relationship between the data ink which is the ink used for the data itself (key informations) and the total amount of ink of the whole visualisation form the data ink ratio.
+That means that visualisations should be as simple as possible while showing all relevant information.
+The other heuristics are:
+-Avoid chart junk 
+-Increase data-density 
+-Layering of information
+
+Our visualization is divided into two parts. The first part is the CO2 - Emission of one or more countries over the years. Firstly the information is displayed on a map. Colour is used to show the CO2 emission of a country in millions of tons. The colour span is going from grey to different shades of purple. The darker the purple the higher the amount of co2 is. The colour purple was chosen because there shouldn't be a judgement implicated by the chosen colour. Furthermore the implementation tool only allowed two colours. 
+"To avoid chart junk"the interactive elements are shared with the different visualization. When they are once chosen by the user they are valid for all of the visualizations. They are placed at the central visualization (the map), because it is the first thing a user should do. The map has to serving purposes for the whole visualization. First of all it gives an overview about the co2 emissions of the country. Secondly it is an interactive element for the user to select the countries he would like to know more about. This encourages the experimentation and exploration, because it is more playful than selecting the countries in a list. The map is also visually more attractive than a list. Nevertheless, a list of countries is placed on the left hand side of the map. This supports the users to easily find and select the country they are looking for. For some user it might also be hard to select small countries on a map. Although a zooming function is available. The countries react on hovering over the countries and additional information are displayed.             8. Five Design Sheet Methodology (fds.design).
 9. Tasks. Describe in detail which data manipulations (sort, filter,..) and visual manipulations (zoom, selection,…) you would want to implement and how these support the goals.
 10. Must-Have Features. List the features without which you would consider your project to be a failure. These should be related to your final design.
 11. Optional Features. List the features which you consider to be nice to have, but not critical. These should be related to your final design.
