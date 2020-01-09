@@ -91,6 +91,10 @@ Waste:
 5. GitHub draft - Franziska - January
 6. Overleaf document - Franziska - January
 7. Poster - for now All - January
+  - Screenshots 
+  - Explain each part (Navigation Interaction)
+  - Theory
+  - Data
 
 # Libraries
 1. Parsing CSV to JSON: https://www.papaparse.com/docs 
