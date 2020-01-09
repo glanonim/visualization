@@ -90,6 +90,8 @@ Waste:
 4. Validation and hapiness check - All - January
 5. GitHub draft - Franziska - January
 6. Overleaf document - Franziska - January
+- Kris please add Data manipulation and Implementation details
+- Kyung Hee please add Data informations
 7. Poster - for now All - January
   - Screenshots 
   - Explain each part (Navigation Interaction)
