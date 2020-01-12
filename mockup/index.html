@@ -17,6 +17,13 @@
   <!-- Material Icons font -->
   <link href="https://glanonim.com/Archive/visualization/css/main.css" rel="stylesheet">
 
+  <script>
+    if (window.location.protocol != "https:") {
+      window.location.protocol = "https:";
+      window.location.reload();
+    }
+  </script>
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -31,7 +38,8 @@
         Beginners' guide
       </button>
       <h1 class="mt-5">How have global CO<sub>2</sub> emissions changed over time?</h1>
-      <p class="lead">The visualisation presents the long-run perspective on global CO2 emissions. Play with year and display style to see how CO2 emission progressed over recent years. Select country to see more details...
+      <p class="lead">The visualisation presents the long-run perspective on global CO2 emissions. Play with year and
+        display style to see how CO2 emission progressed over recent years. Select country to see more details...
       </p>
 
     </main>
@@ -56,6 +64,8 @@
             <div class="row my-3">
               <div class="col">
                 <h5 class="">Pick countries to display details</h5>
+                <p class="mb-0">Displayed unit:<span class="badge badge-pill badge-dark ml-2" id="updateUnit">...</span>
+                </p>
               </div>
               <div class="col-3">
                 <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary" title="Hide this panel"
@@ -65,48 +75,11 @@
             </div>
             <div class="row">
               <div class="col">
-                <ul class="list-group mb-3">
+                <ul class="list-group mb-3" id="countriesList">
                   <!-- Display countries to pick -->
-                  <li class="list-group-item list-group-item-action">
-                    Germany
-                    <span class="badge badge-pill badge-dark bg-citizen-10">312 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    United Kingdom
-                    <span class="badge badge-pill badge-dark bg-citizen-10">309 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Spain
-                    <span class="badge badge-pill badge-dark bg-citizen-9">213 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Russia
-                    <span class="badge badge-pill badge-dark bg-citizen-8">183 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    France
-                    <span class="badge badge-pill badge-dark bg-citizen-7">132 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Country
-                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Country
-                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Country
-                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Country
-                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Country
-                    <span class="badge badge-pill badge-dark bg-citizen-6">132 kg/citizen</span>
-                  </li>
+                  <div class="spinner-border mt-5 ml-5" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
                 </ul>
               </div>
             </div>
@@ -148,25 +121,35 @@
                     <div class="progress">
                       <div class="progress-bar bg-no-data" role="progressbar" style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-1" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-1" role="progressbar" data-role="1"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-2" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-2" role="progressbar" data-role="2"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-3" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-3" role="progressbar" data-role="3"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-4" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-4" role="progressbar" data-role="4"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-5" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-5" role="progressbar" data-role="5"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-6" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-6" role="progressbar" data-role="6"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-7" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-7" role="progressbar" data-role="7"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-8" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-8" role="progressbar" data-role="8"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-9" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-9" role="progressbar" data-role="9"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
-                      <div class="progress-bar bg-citizen-10" role="progressbar" style="width: 10%" aria-valuenow="10">
+                      <div class="progress-bar roleLegend bg-country-10" role="progressbar" data-role="10"
+                        style="width: 10%" aria-valuenow="10">
                       </div>
                     </div>
                   </div>
@@ -180,9 +163,9 @@
             <div class="row">
               <!-- Play years animation -->
               <div class="col text-right">
-                <label for="yearSelect" class="btn btn btn-outline-primary mb-1">Year: </label>
-                <button type="button" class="btn btn-sm btn-primary mb-1" title="Play animation over years"
-                  data-toggle="tooltip"><i class="material-icons pt-1 ic-sm">play_arrow</i></button>
+                <label for="yearSelect" class="btn btn-sm btn-outline-primary mb-1">Year: </label>
+                <button type="button" class="btn btn-sm btn-primary mb-1 disabled" id="processData"
+                  title="Process data for selected countries" data-toggle="tooltip">Process</button>
               </div>
               <!-- Pick year -->
               <div class="col-9 pt-1">
@@ -209,28 +192,30 @@
                 </div>
                 <small class="text-muted float-right mt-2">Data source: <a
                     href="https://data.world/makeovermonday/2019w22">evamurray</a>, <a
-                    href="https://data.world/oecd/population/">OECD</a> via data.world and WorldBank: <a
-                    href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2">1</a>, <a
-                    href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS">2</a>, <a
-                    href="https://data.worldbank.org/indicator/IS.AIR.PSGR">3</a></small>
+                    href="https://data.world/doe/population-bycountry-1980-2010/">doe</a> and <a
+                    href="https://data.world/markmarkoh/country-landmass-sizes-over-time/workspace/file?filename=country_size_by_year.csv">markmarkoh</a>
+                  via data.world</small>
               </div>
             </div>
           </div>
           <div class="row my-3">
             <div class="col my-3">
               <h1 class="mt-4" id="yearUpdate">Details</h1>
-              <p class="lead">Which is the largest contributor to carbon dioxide emissions? You can check the details of each country by sector.</p> 
+              <p class="lead">Which is the largest contributor to carbon dioxide emissions? You can check the details of
+                each country by sector.</p>
               <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#ModalExp">
                 <i class="material-icons mt-1">contact_support</i>
               </button>
             </div>
           </div>
           <!-- Display radar chart -->
-          <div class="row">
-            <div class="col-3">
+          <div class="row col-12">
+            <div class="col-12 col-md-3 mb-5">
               <div class="nav flex-column nav-pills" id="cat-pills" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="cat-transport-tab" data-toggle="pill" href="#cat-transport" role="tab"
-                  aria-controls="cat-transport" aria-selected="true">Transportation</a>
+                <a class="nav-link active" id="cat-noSelection-tab" data-toggle="pill" href="#noSelection" role="tab"
+                  aria-controls="noSelection" aria-selected="true">No selection</a>
+                <a class="nav-link" id="cat-transport-tab" data-toggle="pill" href="#cat-transport" role="tab"
+                  aria-controls="cat-transport" aria-selected="false">Transportation</a>
                 <a class="nav-link" id="cat-energy-tab" data-toggle="pill" href="#cat-energy" role="tab"
                   aria-controls="cat-energy" aria-selected="false">Energy</a>
                 <a class="nav-link" id="cat-industry-tab" data-toggle="pill" href="#cat-industry" role="tab"
@@ -239,10 +224,16 @@
                   aria-controls="cat-land" aria-selected="false">Land</a>
               </div>
             </div>
-            <div class="col-9">
+            <div class="col-12 col-md-9">
               <div class="tab-content">
-                <div class="tab-pane fade show active" id="cat-transport" role="tabpanel"
-                  aria-labelledby="cat-transport-tab">
+                <div class="tab-pane fade show active" role="tabpanel" id="noSelection"
+                  aria-labelledby="cat-noSelection-tab">
+                  <div class="my-5 text-center ">
+                    <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                    <p class="lead mb-5">Select countries and select category from left menu to see radar charts</p>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="cat-transport" role="tabpanel" aria-labelledby="cat-transport-tab">
                   <h3>CO<sub>2</sub> emissions from transport (% of total fuel combustion) </h3>
                   <p class="lead">CO<sub>2</sub> emissions from transport contains emissions from the combustion of fuel
                     for all
@@ -250,24 +241,26 @@
                     international aviation. This includes domestic aviation, domestic navigation, road, rail and
                     pipeline
                     transport, and corresponds to IPCC Source/Sink Category 1 A 3.</p>
-                  <div class="radar" id="radar-t1"></div>
+                  <div class="radar" id="radartA">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS"><small class="text-muted">Data Source:
                       The
                       International Transport Forum</small></a>
 
-                  <h3 class="mt-5">Goods transport</h3 class="mb-5">
-                  <p class="lead">Variables collected are inland transport of goods (T-km). Additional information is
-                    also
-                    gathered on containers transported by rail and sea (Tons and TEU) as well as short sea shipping data
-                    (T-km).</p>
-                  <div class="radar" id="radar-t1"></div>
-                  <a href="https://stats.oecd.org/BrandedView.aspx?oecd_bv_id=trsprt-data-en&doi=g2g5557d-en"><small
-                      class="text-muted">Data Source: IEA Statistics &copy; OECD/IEA 2014</small></a>
 
                   <h3 class="mt-5">Air passengers per country</h3 class="mb-5">
                   <p class="lead">The air transport data represent the total (international and domestic) scheduled
                     traffic carried by the air carriers registered in a country</p>
-                  <div class="radar" id="radar-t3"></div>
+                  <div class="radar" id="radartB">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/IS.AIR.PSGR"><small class="text-muted">Data Source: IEA
                       Statistics &copy; OECD/IEA 2014</small></a>
 
@@ -277,13 +270,23 @@
                   <p class="lead">Energy use refers to use of primary energy before transformation to other end-use
                     fuels, which is equal to indigenous production plus imports and stock changes, minus exports and
                     fuels supplied to ships and aircraft engaged in international transport.</p>
-                  <div class="radar" id="radar-e1"></div>
+                  <div class="radar" id="radareA">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EG.USE.PCAP.KG.OE"><small class="text-muted">Data
                       Source: IEA Statistics © OECD/IEA 2014</small></a>
 
                   <h3 class="mt-5">Electricity production from oil, gas and coal sources (% of total)</h3 class="mt-5">
                   <p class="lead">Sources of electricity refer to the inputs used to generate electricity.</p>
-                  <div class="radar" id="radar-e2"></div>
+                  <div class="radar" id="radareB">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS"><small class="text-muted">Data Source:
                       IEA Statistics &copy; OECD/IEA 2014 ( iea.org/stats/index.asp ), subject to
                       iea.org/t&c/termsandconditions</small></a>
@@ -308,31 +311,14 @@
                     (3) Other Energy Industries contains emissions from fuel combusted in petroleum refineries, for the
                     manufacture of solid fuels, coal mining, oil and gas extraction and other energy-producing
                     industries. </p>
-                  <div class="radar" id="radar-e3"></div>
+                  <div class="radar" id="radareC">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS"><small class="text-muted">Data Source:
                       IEA Statistics © OECD/IEA 2014</small></a>
-
-
-                  <h3 class="mt-5">CO<sub>2</sub> from Total fossil fuels and cement (Total)</h3>
-                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial
-                    processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
-                  <div class="radar" id="radar-e4"></div>
-                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small
-                      class="text-muted">Data Source: Global Carbon Project</small></a>
-
-                  <h3 class="mt-5">CO<sub>2</sub> from Total fossil fuels and cement per Capita</h3>
-                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial
-                    processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
-                  <div class="radar" id="radar-e5"></div>
-                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small
-                      class="text-muted">Data Source: Global Carbon Project</small></a>
-
-                  <h3 class="mt-5">CO<sub>2</sub> from Total fossil fuels and cement per GDP</h3>
-                  <p class="lead">Carbon dioxide emissions from the use of coal, oil and gas (combustion and industrial
-                    processes), the process of gas flaring and the manufacture of cement (1960-2018) </p>
-                  <div class="radar" id="radar-e6"></div>
-                  <a href="https://www.climatewatchdata.org/ghg-emissions?chartType=line&source=55"><small
-                      class="text-muted">Data Source: Global Carbon Project</small></a>
 
                 </div>
                 <div class="tab-pane fade" id="cat-industry" role="tabpanel" aria-labelledby="cat-industry-tab">
@@ -341,7 +327,12 @@
                     combustion)</h3>
                   <p class="lead">CO<sub>2</sub> emissions from manufacturing industries and construction contains the
                     emissions from combustion of fuels in industry. </p>
-                  <div class="radar" id="radar-i1"></div>
+                  <div class="radar" id="radariA">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EN.CO2.MANF.ZS"><small class="text-muted">Data Source:
                       IEA Statistics &copy; OECD/IEA 2014</small></a>
 
@@ -349,7 +340,12 @@
                     services (% of total fuel combustion)</h3>
                   <p class="lead">CO<sub>2</sub> emissions from residential buildings and commercial and public services
                     contains all emissions from fuel combustion in households. </p>
-                  <div class="radar" id="radar-i2"></div>
+                  <div class="radar" id="radariB">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS"><small class="text-muted">Data Source:
                       IEA Statistics &copy; OECD/IEA 2014 ( iea.org/stats/index.asp ), subject to
                       iea.org/t&c/termsandconditions</small></a>
@@ -363,7 +359,12 @@
                   <h3 class="">Agricultural methane emissions (thousand metric tons of CO<sub>2</sub> equivalent)</h3>
                   <p class="lead">Agricultural methane emissions are emissions from animals, animal waste, rice
                     production, agricultural waste burning (nonenergy, on-site), and savannah burning. </p>
-                  <div class="radar" id="radar-l1"></div>
+                  <div class="radar" id="radarlA">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE"><small class="text-muted">Data
                       Source: European Commission, Joint Research Centre ( JRC )/Netherlands Environmental Assessment
                       Agency ( PBL ). Emission Database for Global Atmospheric Research ( EDGAR ):
@@ -373,7 +374,12 @@
                   <p class="lead">Forest area is land under natural or planted stands of trees of at least 5 meters in
                     situ, whether productive or not, and excludes tree stands in agricultural production systems (for
                     example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens. </p>
-                  <div class="radar" id="radar-l2"></div>
+                  <div class="radar" id="radarlB">
+                    <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
+                      <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
+                      <p class="lead">Select countries and trigger processing to generate chart</p>
+                    </div>
+                  </div>
                   <a href="https://data.worldbank.org/indicator/AG.LND.FRST.ZS"><small class="text-muted">Data Source:
                       Food and Agriculture Organization, electronic files and web site.</small></a>
 
@@ -390,77 +396,71 @@
 
       <div class="tab-pane fade" id="nav-timespan" role="tabpanel" aria-labelledby="nav-timespan-tab">
 
-        <div class="row mt-3">
-          <div class="col-12 col-md-3 pt-1" id="chartLine">
-            <div class="row my-3">
-              <div class="col">
-                <h3 class="">Select chart</h3>
-              </div>
-              <div class="col-3">
-                <button type="button" id="hideLinePanel" class="btn btn-sm btn-primary" title="Hide this panel"
-                  data-toggle="tooltip"><i class="material-icons pt-1">chevron_left</i></button>
-
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <ul class="list-group mb-3">
-                  <!-- Display countries to pick -->
-                  <h5 class="mt-3">Transportation</h5>
-                  <li class="list-group-item list-group-item-action active">
-                    CO<sub>2</sub> emissions from transport (% of total fuel combustion)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Goods transport
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Air passengers per country
-                  </li>
-                  <h5 class="mt-3">Energy</h5>
-                  <li class="list-group-item list-group-item-action">
-                    Energy use (kg of oil equivalent per capita)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Electricity production from oil, gas and coal sources (% of total)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    CO<sub>2</sub> emissions from electricity and heat production, total (% of total fuel
-                    combustion)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    CO<sub>2</sub> from Total fossil fuels and cement (Total)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    CO<sub>2</sub> from Total fossil fuels and cement per Capita
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    CO<sub>2</sub> from Total fossil fuels and cement per GDP
-                  </li>
-                  <h5 class="mt-3">Industry & Residence</h5>
-                  <li class="list-group-item list-group-item-action">
-                    CO<sub>2</sub> emissions from manufacturing industries and construction (% of total fuel
-                    combustion)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    CO<sub>2</sub> emissions from residential buildings and commercial and public
-                    services (% of total fuel combustion)
-                  </li>
-
-                  <h5 class="mt-3">Land</h5>
-                  <li class="list-group-item list-group-item-action">
-                    Agricultural methane emissions (thousand metric tons of CO<sub>2</sub> equivalent)
-                  </li>
-                  <li class="list-group-item list-group-item-action">
-                    Forest area (% of land area)
-                  </li>
-                </ul>
-              </div>
+        <div class="">
+          <div class="row mt-3">
+            <div class="col-12">
+              <h3 class="">Select chart</h3>
             </div>
           </div>
-          <div class="col position-relative"> 
-            <button type="button" id="showLinePanel" class="btn btn-sm btn-primary mb-3 mx-3"
-            title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1">chevron_right</i></button>
-            <div class="chart" id="linediv"></div>
+          <div class="w-100"></div>
+          <div class="row">
+            <div class="col-6">
+              <!-- Display countries to pick -->
+              <h5 class="mt-3">Transportation</h5>
+              <ul class="list-group mb-3 stackedStarter">
+                <li class="list-group-item list-group-item-action" data-chart="t1">
+                  CO<sub>2</sub> emissions from transport
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="t2">
+                  Air passengers per country
+                </li>
+
+              </ul>
+              <h5 class="mt-3">Energy</h5>
+              <ul class="list-group mb-3 stackedStarter">
+                <li class="list-group-item list-group-item-action" data-chart="e1">
+                  Energy use
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="e2">
+                  Electricity production from oil, gas and coal
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="e3">
+                  CO<sub>2</sub> from electricity and heat production
+                </li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <h5 class="mt-3">Industry & Residence</h5>
+              <ul class="list-group mb-3 stackedStarter">
+                <li class="list-group-item list-group-item-action" data-chart="i1">
+                  CO<sub>2</sub> from manufacturing and construction
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="i2">
+                  CO<sub>2</sub> from residential buildings services
+                </li>
+              </ul>
+              <h5 class="mt-3">Land</h5>
+              <ul class="list-group mb-3 stackedStarter">
+                <li class="list-group-item list-group-item-action" data-chart="l1">
+                  Agricultural methane emissions
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="l2">
+                  Forest area
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col position-relative">
+            <button type="button" id="showLinePanel" class="btn btn-sm btn-primary mb-3 mx-3" title="Show side panel"
+              data-toggle="tooltip"><i class="material-icons pt-1">chevron_right</i></button>
+            <div class="chart" id="linediv">
+              <div class="mt-5 pt-5 text-center placeholder" id="stackedPlaceholder">
+                <i class="material-icons h1 mt-5 mb-3">playlist_add</i>
+                <p class="lead">Select countries and select from list on left to generate chart</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -486,44 +486,144 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <h4>Tabs</h4>
+          <p>Website is divided into 2 tabs:</p>
+          <div class="row mb-3 text-center">
+            <div class="col">
+              <div class="nav nav-tabs" role="tablist">
+                <a class="nav-item nav-link active">Map & details</a>
+                <a class="nav-item nav-link">Timespan</a>
+              </div>
+            </div>
+          </div>
+          <p>First tab shows data for 1 year. Second tab may display for complete timespan.</p>
+          <p>To see details for 1 year and complete timespan chart list of countries must be defined.</p>
+          <h4>Countries list</h4>
+          <p>To define country user must click from list located in sidebar on left side of map. Next to country name
+            is displayed value for particular map type. Background color depends on value displayed on map.</p>
+          <div class="row mb-3 text-center">
+            <div class="col">
+              <ul class="list-group mb-3">
+                <li class="list-group-item list-group-item-action">Greenland<span
+                    class="badge badge-pill badge-dark ml-1 bg-no-data text-dark">no data</span></li>
+              </ul>
+            </div>
+          </div>
+          <p>List may be hidden if hide arrow button has been clicked. To show list, click on arrow on blue background
+            in the corner of the map.</p>
+          <div class="row mb-3 text-center">
+            <div class="col">
+              <button type="button" class="btn btn-sm btn-primary " title="Show side panel" data-toggle="tooltip"><i
+                  class="material-icons pt-1">chevron_right</i></button>
+            </div>
+          </div>
+          <p>Once countries are defined processing must be triggered with Processing button. Button is disabled
+            until any country is not selected. It may last up to 2 minutes. Over 1 Megabyte of data must be
+            processed.</p>
+          <div class="row mb-3 text-center">
+            <div class="col">
+              <button type="button" class="btn btn-sm btn-primary disabled"
+                title="Process data for selected countries" data-toggle="tooltip">Process</button>
+            </div>
+          </div>
+          <p>Before processing year may be change and radar charts will display for this year. Processing must be
+            repeated after year change.</p>
+          <div class="row mb-3 text-center">
+            <div class="col">
+              <input type="range" class="custom-range" id="yearSelect" min="1964" max="2019" step="1" value="1975">
+            </div>
+          </div>
+          <h4>Map</h4>
+          <p>Map is being coloured depending on value for each country and selected data type. Data types might be changed with button below the legend:</p>
+         
+          <div class="row mb-3 text-center">
+            <div class="col">
+              <div class="btn-group btn-group-sm btn-block" role="group" aria-label="Data display">
+                <button type="button" class="btn btn-primary">citizen of a country</button>
+                <button type="button" class="btn btn-info">km<sup>2</sup> of country area</button>
+                <button type="button" class="btn btn-indigo">country</button>
+              </div>
+            </div>
+          </div>
+          <p>Data is displayed into 11 categories and each has own color, depending on map data category. Each data category has same color for missing data for particular country.</p>
+         
+          <h4>Radar</h4>
+          <p>Radar charts are displaying detailed data from 1 year for selected countries. Data must be processed for each year.</p>
+          <p>It has been noted that after changing list of country radar charts are not displayed properly. Please refresh website to omit this issue.</p>
+         
+          <h4>Timespan</h4>
+          <p>Timespan consists of list of available charts on the top. List is same as for radar charts, displayed in details for 1 year.</p>
+          <p>After defining countries and processing go to tab Timespan. Select one of categories to see a stacked chart. Chart timespan may be narrowed using interactive select above the chart.</p>
+        
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Modal - loading in progress -->
+  <div class="d-none " id="processingProgress" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-body text-center py-5">
+      <p class="lead text-light">Data is being loaded and processed</p>
+      <button type="button" class="btn btn-primary">
+        <div class="spinner-border spinner-border-sm text-light mr-2 mb-1" role="status">
+          <span class="sr-only">Loading...</span>
+        </div><b class="pl-2 border-left" id="valueProgress">0%</b>
+      </button>
     </div>
   </div>
 
-<!-- Modal -->
-<div class="modal fade" id="ModalExp" tabindex="-1" role="dialog" aria-labelledby="ModalExpLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ModalExpLabel">Explanation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-<h5>Global greenhouse gas emissions are broken down by sectoral sources in the sections which follow:</h5>
-<p><b>Transport:</b> domestic aviation, road transportation, rail transportation, domestic navigation, other transportation.</p>
-<p><b>Energy (energy, manufacturing and construction industries and fugitive emissions):</b> emissions are inclusive of public heat and electricity production; other energy industries; fugitive emissions from solid fuels, oil and gas, manufacturing industries and construction.</p>
-<p><b>International bunkers:</b> international aviation; international navigation/shipping.</p>
-<p><b>Residential, commercial, institutional and AFF:</b> Residential and other sectors.</p>
-<p><b>Industry (industrial processes and product use):</b> production of minerals, chemicals, metals, pulp/paper/food/drink, halocarbons, refrigeration and air conditioning; aerosols and solvents; semicondutor/electronics manufacture; electrical equipment.</p>
-<p><b>Waste:</b> solid waste disposal; wastewater handling; waste incineration; other waste handling.</p>
-<p><b>Land use:</b> emissions from the net conversion of forest; cropland; grassland and burning biomass for agriculture and other uses, including Argiculture category :methane and nitrous oxide emissions from enteric fermentation; manure management; rice cultivation; synthetic fertilizers; manure applied to soils; manure left on pasture; crop residues; burning crop residues, savanna and cultivation of organic soils.</p>
-<p><b>Other sources:</b> fossil fuel fires; indirect nitrous oxide from non-agricultural NOx and ammonia; other anthropogenic sources.</p>
-<small>Sources: IEA Statistics &copy; OECD/IEA 2014 (http://www.iea.org/stats/index.asp), subject to https://www.iea.org/t&c/termsandconditions/</small>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+  <!-- Modal -->
+  <div class="modal fade" id="ModalExp" tabindex="-1" role="dialog" aria-labelledby="ModalExpLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalExpLabel">Explanation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Global greenhouse gas emissions are broken down by sectoral sources in the sections which follow:</h5>
+          <p><b>Transport:</b> domestic aviation, road transportation, rail transportation, domestic navigation, other
+            transportation.</p>
+          <p><b>Energy (energy, manufacturing and construction industries and fugitive emissions):</b> emissions are
+            inclusive of public heat and electricity production; other energy industries; fugitive emissions from
+            solid
+            fuels, oil and gas, manufacturing industries and construction.</p>
+          <p><b>International bunkers:</b> international aviation; international navigation/shipping.</p>
+          <p><b>Residential, commercial, institutional and AFF:</b> Residential and other sectors.</p>
+          <p><b>Industry (industrial processes and product use):</b> production of minerals, chemicals, metals,
+            pulp/paper/food/drink, halocarbons, refrigeration and air conditioning; aerosols and solvents;
+            semicondutor/electronics manufacture; electrical equipment.</p>
+          <p><b>Waste:</b> solid waste disposal; wastewater handling; waste incineration; other waste handling.</p>
+          <p><b>Land use:</b> emissions from the net conversion of forest; cropland; grassland and burning biomass for
+            agriculture and other uses, including Argiculture category :methane and nitrous oxide emissions from
+            enteric
+            fermentation; manure management; rice cultivation; synthetic fertilizers; manure applied to soils; manure
+            left on pasture; crop residues; burning crop residues, savanna and cultivation of organic soils.</p>
+          <p><b>Other sources:</b> fossil fuel fires; indirect nitrous oxide from non-agricultural NOx and ammonia;
+            other anthropogenic sources.</p>
+          <small>Sources: IEA Statistics &copy; OECD/IEA 2014 (http://www.iea.org/stats/index.asp), subject to
+            https://www.iea.org/t&c/termsandconditions/</small>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </body>
+
+
+<script>
+  // clear local storage before any other action 
+  localStorage.clear();  
+</script>
 
 <!-- jQuery library -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -547,9 +647,22 @@
 <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
 <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
+<!-- CSV parser -->
+<script src="https://glanonim.com/Archive/visualization/js/papaparse.min.js"></script>
+
+
+<!-- MAP & CHARTS stuff -->
+<script src="https://glanonim.com/Archive/visualization/js/map.js"></script>
 
 <!-- JS stuff -->
 <script src="https://glanonim.com/Archive/visualization/js/main.js"></script>
 
+
+
+<script>
+  $(function () {
+
+  });
+</script>
 
 </html>
