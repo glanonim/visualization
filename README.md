@@ -50,6 +50,52 @@ With the Interaction Tufte’s Integrity Principles:
 11. Optional Features. List the features which you consider to be nice to have, but not critical. These should be related to your final design.
 12. Project Schedule. Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members. Write your schedule in terms of weekly deadlines.
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
+During brainstorming session we talked for long time how we can provide good interaction for most users at reasonable development time. We decied to create 1-page website. 
+Our objectives when considering possible frameworks and technolgies:
+\begin{itemize}
+\item We would prefer to load raw data to avoid corruption
+\item We would use CSV files available publicly
+\item We know HTML, CSS and JavaScript
+\item We do not know how to generate charts and would like to show them
+\end{itemize}{}
+Most time we spend on aligning concept of page, how should it look and on finding JavaScript library that would be able to generate such visualization. After hours of research few JavaScript libraries were selected that worked with jQuery and would fit our data structure.
+Following frameworks and technologies were used:
+\begin{itemize}
+\item HTML5 and CSS3 
+\item Bootstrap Framework to provide common UI elements
+\item JavaScript (with ES6) with jQuery framework
+\item amCharts library for charts
+\item PapaParse (library for jQuery) to process raw data saved in CSV files
+\end{itemize}{}
+Based on selected technologies work was divided into following milestones:
+\begin{itemize}
+\item Decide datasets and charts
+\item Prepare mock-up 
+\item Align mock-up
+\item Load data for map
+\item Display map
+\item Select countries
+\item Load and process data for countries
+\item Display radar charts
+\item Display stacked charts
+\item Optimization
+\item Final review
+\end{itemize}{}
+Personally two items from list above were particulary painfull - aligning on mock-up and loading and processing data for countries. Every team member had different expectation and wanted to have "best" visualization. After all it was difficult to focus on finishing what we defined rather than planning new changes.
+
+Data was loaded as object, maps required different formats of objects.
+To sustain clean code following main functions were planned:
+\begin{itemize}
+\item Load map data and display countries list
+\item Switch map category
+\item Process data
+\item Load data for map 
+\end{itemize}{}
+Data between function was being stored in localStorage. It turned out to be very helpful as amChart functions were preventing to access many external variables.
+
+Maps from amCharts are working based on 2-letters countries codes. It means that after adding to final array/object respective 2-letter coutry code, country will be drawn on the map. All data sets were based on ISO 3-letters codes. Separate dataset "c1.csv" was used to translate one code to the other and to keep consistent countries naming.
+
+
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
 
 # Detailed displays
