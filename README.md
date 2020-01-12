@@ -19,6 +19,43 @@ The motivation of this project is the current discussion about global warming. C
 4. Project Objectives and Goals. Provide the primary questions you are trying to answer with your visualisation. What would you like to learn and accomplish? List the benefits.
 5. Data. From where and how are you collecting your data? If appropriate, provide a link to your data sources.
 6. Data Processing. Do you expect to do substantial data cleanup? What quantities do you plan to derive from your data? How would data processing be implemented?
+
+Data is processing in few steps that will be described as separate subsections.
+
+/subsection{Map generation}
+
+Initially we load list of countries (2-letter country code, 3-letter country code and country name) and dataset with generated CO2 per country. In parallel datasets with area of country and amount of citizens are loaded and parsed as JSON array to local storage. Those 2 datasets are not displayed initially and may be loaded a bit later.
+
+Then we create new array that will be used for map and countries list. We try to match 3-letters code for CO2 dataset with 2-letter code. If it is successful we add it as new row. Not matched elements are marked as No data items.
+
+Finally we generate map and print countries list.
+
+If input with country will be modified map generation function will be called with new year. Due to performance issue Processing button must be clicked to reload radar charts.
+
+/subsection{Country list} 
+
+Any time user will select a country its 2-letter code will be copied to an array and saved to local storage.
+
+/subsection{Processing} 
+Once any country is being selected and button processing is hit all data sources are being loaded. 
+
+Due to poor hosting it may take up to 1 minute to download all csv files. After loading each data is processed in separate sub-function. 
+
+For stacked charts, arrays with selected countries are being processed and saved to local storage. 
+
+For radar charts, objects with value for particular year and selected countries are being processed and saved to local storage. 
+This step could be moved to generate radar charts to allow to see other years without processing.
+
+/subsection{Radar chart} 
+Radar charts are generated every time a category is being selected from left list on the left side. Function is checking if data was processed and saved to local storage.
+If is loading for particular category an object from local storage and displays it.
+
+/subsection{Stacked chart}
+Stacked charts are generated after check of processed data and selecting a dataset from list above chart placeholder. Function is loading respective dataset and simply sending it to chart object.
+
+/subsection{Remaining functions}
+Remaining function are supporting tasks descrbied above and will be not described.
+
 7. Visualisation Design. How will you display your data? Provide some general ideas that you have for the visualisation design. Develop three alternative prototype designs for your visualisation. Discuss the pros and cons of each design. Create one final design that incorporates the best of your three designs. Describe your designs and justify your choices of visual encodings. We recommend you use the
 
 The visual design was developed by considering Edward
@@ -48,6 +85,13 @@ With the Interaction Tufte’s Integrity Principles:
 9. Tasks. Describe in detail which data manipulations (sort, filter,..) and visual manipulations (zoom, selection,…) you would want to implement and how these support the goals.
 10. Must-Have Features. List the features without which you would consider your project to be a failure. These should be related to your final design.
 11. Optional Features. List the features which you consider to be nice to have, but not critical. These should be related to your final design.
+
+- Narrow countries list by typing
+- Select country by clicking on the map
+- Add lables to radar charts
+- Improve speed of processing
+- Generate radar charts based on data from stacked charts, not 1 year generated separetly. That will allow to see radar charts for other years without processing.
+
 12. Project Schedule. Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members. Write your schedule in terms of weekly deadlines.
 
 13. Implementation details. List what tools/frameworks you used to implement your interactive visualisation. List the difficulties you encountered. List which of the desired features are implemented and which are missing.
@@ -97,12 +141,21 @@ To sustain clean code following main functions were planned:
 \item Switch map category
 \item Process data
 \item Load data for map 
+\item Load data for radar chart (based on processed data) after selecting category
+\item Load data for stacked chart (based on processed data) after selecting category
+\item Clean countries list
+\item Hide side panel
 \end{itemize}{}
+
+Other functions were provided by frameworks.
 
 Data between function was being stored in localStorage. It turned out to be very helpful as amChart functions were preventing to access many external variables.
 
 Maps from amCharts are working based on 2-letters countries codes. It means that after adding to final array/object respective 2-letter coutry code, country will be drawn on the map. All data sets were based on ISO 3-letters codes. Separate dataset "c1.csv" was used to translate one code to the other and to keep consistent countries naming.
 
+After putting all 13 datasets together (9 datasets for detailed charts) it turned out that performance is slow. Some processing was simplified but it further efforts in this direction must be made.
+
+Moreover, after changing list of countries to display details, radar charts are not generating properly. No fix was found so far.
 
 14. Work Breakdown Structure (e.g. matrix) with a statement which project member did which part of the structure to what extend.
 
