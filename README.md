@@ -212,18 +212,51 @@ Waste:
   - Funnel: https://www.amcharts.com/demos/funnel-chart/
   
 # Data sources
-1. 2019/W22: CO2 Emissions per capita: https://data.world/makeovermonday/2019w22
-2. Population: https://data.world/oecd/population/workspace/file?filename=population.csv
-3. Countries area: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2
-4. Forest area per country: https://data.worldbank.org/indicator/AG.LND.FRST.ZS
-5. Air passengers per year: https://data.worldbank.org/indicator/IS.AIR.PSGR
-6. (Update) CO2 from Total fossil fuels and cement (by 2018) : https://www.climatewatchdata.org/ghg-emissions?source=50
-7. (Update) #1 CO2 emissions from transport (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS
-8. (Update) #2 CO2 emissions from electricity and heat production, total (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS
-9. (Update) #3 CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS
-10. (Update) #4 CO2 emissions from manufacturing industries and construction (% of total fuel combustion) : CO2 emissions from manufacturing industries and construction (% of total fuel combustion) : https://data.worldbank.org/indicator/EN.CO2.MANF.ZS
-11. (Update) #5. Agricultural methane emissions (thousand metric tons of CO2 equivalent) : 
-https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE
-12. (Update) #6. Total fossil fuels and cement by 2018 : 
-https://www.climatewatchdata.org/embed/ghg-emissions?source=50
-13. (Update) #7. CO2 from Waste by 2016 : https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=47&historical-emissions-end_year=2016&historical-emissions-gases=190&historical-emissions-regions=&historical-emissions-sectors=577&page=1&sort_col=gas&sort_dir=ASC
+<Global Map>
+1) Country area:
+Source : Surface area, Food and Agriculture Organization, electronic files and web site.
+Link: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2 
+2) Population
+Link: https://data.oecd.org/pop/population.htm
+https://data.world/oecd/population/workspace/file?filename=population.csv
+3) CO2 emission
+Source : Carbon Dioxide Information Analysis Center, Environmental Sciences Division, Oak Ridge National Laboratory, Tennessee, United States.
+Link : https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?contextual=emissions-by-gas&end=2014&start=1960&view=chart
+4) Per capita CO2 emissions
+Source : OWID based on the Global Carbon Project; Carbon Dioxide Information Analysis Centre (CDIAC); Gapminder and UN population estimates
+Link: https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions
+
+<Transportation>
+5) CO2 emissions from transport (% of total fuel combustion)
+Source : IEA Statistics © OECD/IEA 2014
+Link : https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS
+6)Air passengers carried include both domestic and international aircraft passengers of air carriers registered in the country
+Source : International Civil Aviation Organization, Civil Aviation Statistics of the World and ICAO staff estimates.
+Link : https://data.worldbank.org/indicator/IS.AIR.PSGR
+
+<Energy>
+7) Energy use (kg of oil equivalent per capita)
+Source : IEA Statistics © OECD/IEA 2014
+Link : https://data.worldbank.org/indicator/EG.USE.PCAP.KG.OE
+8) Electricity production from oil, gas and coal sources (% of total)
+Source: Electricity production from oil, gas and coal sources (% of total)
+Link : https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS
+9) CO2 emissions from electricity and heat production, total (% of total fuel combustion)
+Source: IEA Statistics © OECD/IEA 2014
+Link: https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS
+
+<Industry and Residence>
+10) CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
+Source: IEA Statistics © OECD/IEA 2014
+Link: https://data.worldbank.org/indicator/EN.CO2.MANF.ZS
+11) CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
+Source: IEA Statistics © OECD/IEA 2014
+Link: https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS
+
+<Land>
+12) Agricultural methane emissions (thousand metric tons of CO2 equivalent)
+Source: European Commission, Joint Research Centre ( JRC )/Netherlands Environmental Assessment Agency ( PBL ). Emission Database for Global Atmospheric Research ( EDGAR ): edgar.jrc.ec.europa.eu 
+Link: https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE
+13) Forest area (% of land area)
+Source: Food and Agriculture Organization, electronic files and web site.
+Link : https://data.worldbank.org/indicator/AG.LND.FRST.ZS
