@@ -16,10 +16,14 @@ The motivation of this project is the current discussion about global warming. C
 
 
 3. Related Work. Anything that inspired you, such as a paper, a web site, visualisations we discussed in class, etc.
-•Travel Visa Inequality : https://projects.christianlaesser.com/travel-visa-inequality/
-•How do we getto zero greenhous gas emissions?https://informationisbeautiful.net/visualizations/how-to-reduce-the-worlds-carbon-footprint-by-2050/
-•Global forest watch : https://www.globalforestwatch.org/
-•Global Publicly Disclosed Product Carbon Footprints : https://carboncatalogue.coclear.co/?sector=Chemicalscompany=allyear=allsort=company
+•Travel Visa Inequality
+ https://projects.christianlaesser.com/travel-visa-inequality/
+•How do we getto zero greenhous gas emissions?
+ https://informationisbeautiful.net/visualizations/how-to-reduce-the-worlds-carbon-footprint-by-2050/
+•Global forest watch
+ https://www.globalforestwatch.org/
+•Global Publicly Disclosed Product Carbon Footprints
+ https://carboncatalogue.coclear.co/?sector=Chemicalscompany=allyear=allsort=company
 
 4. Project Objectives and Goals. Provide the primary questions you are trying to answer with your visualisation. What would you like to learn and accomplish? List the benefits.
 5. Data. From where and how are you collecting your data? If appropriate, provide a link to your data sources.
