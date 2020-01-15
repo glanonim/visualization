@@ -16,12 +16,16 @@ The motivation of this project is the current discussion about global warming. C
 
 
 3. Related Work. Anything that inspired you, such as a paper, a web site, visualisations we discussed in class, etc.
+
 •Travel Visa Inequality
  https://projects.christianlaesser.com/travel-visa-inequality/
+ 
 •How do we getto zero greenhous gas emissions?
  https://informationisbeautiful.net/visualizations/how-to-reduce-the-worlds-carbon-footprint-by-2050/
+ 
 •Global forest watch
  https://www.globalforestwatch.org/
+ 
 •Global Publicly Disclosed Product Carbon Footprints
  https://carboncatalogue.coclear.co/?sector=Chemicalscompany=allyear=allsort=company
 
