@@ -935,8 +935,7 @@ function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear
               if (dividerSet[m]["Country Name"] == countryTemp[j]["country"]) {
                 var baseCO = dividerSet[m][colNames[l]];
                 if (baseCO == "" || isNaN(baseCO) || tempVal==0){tempVal = 0;}else{
-                  tempVal = baseCO / tempVal * 1000; 
-                  if(name == "g2ST"){tempVal = tempVal*1000000;}
+                  tempVal = baseCO / tempVal * 1000;  
                 }
                   }
             } 
@@ -961,8 +960,7 @@ function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear
   if (isNaN(prog)) { prog = 99; }
   if (prog == 0 && !isNaN(prog)) { prog = 1; }
   var progBar = Math.round(100 - (99 / prog));
-  $("#valueProgress").text(progBar + "%");
-  console.log(progBar + "%");
+  $("#valueProgress").text(progBar + "%"); 
   if (parseInt(prog) > 10) {
     $("div#processingProgress").addClass("d-none");
     localStorage.removeItem('prog');
