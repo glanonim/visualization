@@ -257,7 +257,6 @@ Link : https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS <br/>
 9) CO2 emissions from electricity and heat production, total (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
 Link: https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS <br/>
-
 <Industry and Residence><br/>
 10) CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
@@ -265,7 +264,6 @@ Link: https://data.worldbank.org/indicator/EN.CO2.MANF.ZS <br/>
 11) CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
 Link: https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS <br/>
-
 <Land>
 12) Agricultural methane emissions (thousand metric tons of CO2 equivalent)
 Source: European Commission, Joint Research Centre ( JRC )/Netherlands Environmental Assessment Agency ( PBL ). Emission Database for Global Atmospheric Research ( EDGAR ): edgar.jrc.ec.europa.eu 
