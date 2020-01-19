@@ -228,48 +228,48 @@ Waste:
 <Global Map>
 1) Country area:
 Source : Surface area, Food and Agriculture Organization, electronic files and web site.
-Link: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2 
-2) Population
+Link: https://data.worldbank.org/indicator/AG.SRF.TOTL.K2  <br/>
+2) Population  
 Link: https://data.oecd.org/pop/population.htm
-https://data.world/oecd/population/workspace/file?filename=population.csv
-3) CO2 emission
+https://data.world/oecd/population/workspace/file?filename=population.csv <br/>
+3) CO2 emission  
 Source : Carbon Dioxide Information Analysis Center, Environmental Sciences Division, Oak Ridge National Laboratory, Tennessee, United States.
-Link : https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?contextual=emissions-by-gas&end=2014&start=1960&view=chart
+Link : https://data.worldbank.org/indicator/EN.ATM.CO2E.KT?contextual=emissions-by-gas&end=2014&start=1960&view=chart <br/>
 4) Per capita CO2 emissions
 Source : OWID based on the Global Carbon Project; Carbon Dioxide Information Analysis Centre (CDIAC); Gapminder and UN population estimates
-Link: https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions
+Link: https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions <br/>
 
 <Transportation>
 5) CO2 emissions from transport (% of total fuel combustion)
 Source : IEA Statistics © OECD/IEA 2014
-Link : https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS
+Link : https://data.worldbank.org/indicator/EN.CO2.TRAN.ZS <br/>
 6)Air passengers carried include both domestic and international aircraft passengers of air carriers registered in the country
 Source : International Civil Aviation Organization, Civil Aviation Statistics of the World and ICAO staff estimates.
-Link : https://data.worldbank.org/indicator/IS.AIR.PSGR
+Link : https://data.worldbank.org/indicator/IS.AIR.PSGR <br/>
 
 <Energy>
 7) Energy use (kg of oil equivalent per capita)
 Source : IEA Statistics © OECD/IEA 2014
-Link : https://data.worldbank.org/indicator/EG.USE.PCAP.KG.OE
+Link : https://data.worldbank.org/indicator/EG.USE.PCAP.KG.OE <br/>
 8) Electricity production from oil, gas and coal sources (% of total)
 Source: Electricity production from oil, gas and coal sources (% of total)
-Link : https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS
+Link : https://data.worldbank.org/indicator/EG.ELC.FOSL.ZS <br/>
 9) CO2 emissions from electricity and heat production, total (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
-Link: https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS
+Link: https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS <br/>
 
-<Industry and Residence>
+<Industry and Residence><br/>
 10) CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
-Link: https://data.worldbank.org/indicator/EN.CO2.MANF.ZS
+Link: https://data.worldbank.org/indicator/EN.CO2.MANF.ZS <br/>
 11) CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
-Link: https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS
+Link: https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS <br/>
 
 <Land>
 12) Agricultural methane emissions (thousand metric tons of CO2 equivalent)
 Source: European Commission, Joint Research Centre ( JRC )/Netherlands Environmental Assessment Agency ( PBL ). Emission Database for Global Atmospheric Research ( EDGAR ): edgar.jrc.ec.europa.eu 
-Link: https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE
+Link: https://data.worldbank.org/indicator/EN.ATM.METH.AG.KT.CE <br/>
 13) Forest area (% of land area)
 Source: Food and Agriculture Organization, electronic files and web site.
-Link : https://data.worldbank.org/indicator/AG.LND.FRST.ZS
+Link : https://data.worldbank.org/indicator/AG.LND.FRST.ZS <br/>
