@@ -111,7 +111,7 @@ $("input#yearSelect").click(function () {
   displayMap(val);
 });
 // trigger data process
-$("button#processData").click(function () {
+$("button.processData").click(function () {
   $("div#processingProgress").removeClass("d-none");
   var val = $("input#yearSelect").val();
   cleanCharts();
@@ -134,9 +134,9 @@ $("#countriesList").on("click", "li", function () {
     selCountries.push(cid);
   }
   if (selCountries.length > 0) {
-    $("button#processData").removeClass("disabled");
+    $("button.processData").removeClass("disabled");
   } else {
-    $("button#processData").addClass("disabled");
+    $("button.processData").addClass("disabled");
   }
   // save back to local storage
   localStorage.setItem("selCountries", JSON.stringify(selCountries));
@@ -370,6 +370,7 @@ function yearArrayDivider(year, array, codes, divider) {
     // calculate final value if existing
     y = parseFloat(array[i][year.toString()]);
     // if 2nd data set is defined means needs to divide with that
+    var value = 0;
     if (mapContext != "country") {
 
       // in loop find country with that value 
@@ -378,7 +379,8 @@ function yearArrayDivider(year, array, codes, divider) {
           if (array[i]["Country Code"] == divider[j]["Country Code"]) {
             value = parseFloat(divider[j][year.toString()]);
           };
-        } else {
+        }
+        if (mapContext == "citizen") {
           if (array[i]["Country Name"] == divider[j][""]) {
             value = parseFloat(divider[j][year.toString()]);
           };
@@ -396,7 +398,7 @@ function yearArrayDivider(year, array, codes, divider) {
         }
       }
       if (mapContext != "country") {
-        if (isNaN(value)) { value = 0.1 }
+        if (value == 0) { value = 0.1 }
         divd = 1;
         if (mapContext == "area") { divd = 1000 }
         if (mapContext == "citizen") { divd = 1 }
@@ -416,7 +418,7 @@ function updateMinMaxYear(y1, y2) {
 // update year in a text (automatically max) 
 function updateYear(year) {
   $("label[for='yearSelect']").text("Year: " + year);
-  $("h1#yearUpdate").text("Details for " + year);
+  $("h1#yearUpdate").text("Cross country comparisons in " + year);
 }
 var contains = function (needle) {
   // Per spec, the way to identify NaN is that it is not equal to itself
@@ -448,7 +450,7 @@ function cleanCharts() {
   $("ul.stackedStarter li").removeClass("active");
   var placeholderRadar = '<div class="mt-5 pt-5 text-center placeholder radarPlaceholder"><i class="material-icons h1 mt-4 mb-3">playlist_add</i><p class="lead">Select countries and trigger processing to generate chart</p></div>';
   $("div.radar").html(placeholderRadar);
-  $('#cat-pills a:first-child').tab('show');
+  //$('#cat-pills a:first-child').tab('show');
 }
 // PROCESS DATA
 //
@@ -473,6 +475,9 @@ function processData(givenYear) {
     // t1 -> co2 emission from transport 
     // t3 -> air passengers
     // c1 -> countries codes - full, iso-2, alpha 3 
+    file_g1 = "https://glanonim.com/Archive/visualization/data/g1.csv";
+    file_g2 = "https://glanonim.com/Archive/visualization/data/g2.csv";
+    file_g3 = "https://glanonim.com/Archive/visualization/data/g3.csv";
     file_e1 = "https://glanonim.com/Archive/visualization/data/e1.csv";
     file_e2 = "https://glanonim.com/Archive/visualization/data/e2.csv";
     file_e3 = "https://glanonim.com/Archive/visualization/data/e3.csv";
@@ -522,7 +527,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"e1s","e1",givenYear); 
+        generateFinalArray(countryTemp, results.data, "e1s", "e1", givenYear);
       }
     });
     Papa.parse(file_e2, {
@@ -532,7 +537,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"e2s","e2",givenYear); 
+        generateFinalArray(countryTemp, results.data, "e2s", "e2", givenYear);
       }
     });
     Papa.parse(file_e3, {
@@ -542,7 +547,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"e3s","e3",givenYear); 
+        generateFinalArray(countryTemp, results.data, "e3s", "e3", givenYear);
       }
     });
     Papa.parse(file_i1, {
@@ -552,7 +557,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"i1s","i1",givenYear); 
+        generateFinalArray(countryTemp, results.data, "i1s", "i1", givenYear);
       }
     });
     Papa.parse(file_i2, {
@@ -562,7 +567,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"i2s","i2",givenYear); 
+        generateFinalArray(countryTemp, results.data, "i2s", "i2", givenYear);
       }
     });
     Papa.parse(file_l1, {
@@ -572,7 +577,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"l1s","l1",givenYear); 
+        generateFinalArray(countryTemp, results.data, "l1s", "l1", givenYear);
       }
     });
     Papa.parse(file_l2, {
@@ -582,7 +587,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp,results.data,"l2s","l2",givenYear); 
+        generateFinalArray(countryTemp, results.data, "l2s", "l2", givenYear);
       }
     });
     Papa.parse(file_t1, {
@@ -592,7 +597,7 @@ function processData(givenYear) {
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
-        generateFinalArray(countryTemp, results.data, "t1s", "t1", givenYear); 
+        generateFinalArray(countryTemp, results.data, "t1s", "t1", givenYear);
       }
     });
     Papa.parse(file_t3, {
@@ -603,6 +608,20 @@ function processData(givenYear) {
         prog++;
         localStorage.setItem("prog", JSON.stringify(prog));
         generateFinalArray(countryTemp, results.data, "t2s", "t2", givenYear);
+      }
+    });
+    Papa.parse(file_g1, {
+      download: true,
+      header: true,
+      complete: function (results) {
+        generateFinalArray(countryTemp, results.data, "g1s", "g1", givenYear);
+        g2ST = JSON.parse(localStorage.getItem("g2"));
+        generateFinalArray(countryTemp, g2ST, "g2STs", "g2ST", givenYear, results.data);
+        g3ST = JSON.parse(localStorage.getItem("g3"));
+        generateFinalArray(countryTemp, g3ST, "g3STs", "g3ST", givenYear, results.data);
+        prog = parseInt(JSON.parse(localStorage.getItem("prog")));
+        prog = prog + 3;
+        localStorage.setItem("prog", JSON.stringify(prog));
       }
     });
 
@@ -762,6 +781,21 @@ function drawRadar(type) {
 function drawStacked(type) {
   $("div#linediv").html();
   var chartTitle, dataset, legendLeft;
+  if (type == "g1") {
+    dataset = "g1s";
+    chartTitle = "CO2 emissions per country";
+    legendLeft = "mton";
+  }
+  if (type == "g2") {
+    dataset = "g2STs";
+    chartTitle = "CO2 emissions per country square kilometer";
+    legendLeft = "ton/km2";
+  }
+  if (type == "g3") {
+    dataset = "g3STs";
+    chartTitle = "CO2 emissions per citizen of a country";
+    legendLeft = "ton/ppl";
+  }
   if (type == "t1") {
     dataset = "t1s";
     chartTitle = "CO2 emissions from transport";
@@ -880,7 +914,7 @@ function drawStacked(type) {
     chart.scrollbarX = new am4core.Scrollbar();
   });
 }
-function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear) {
+function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear, dividerSet) {
   // copy for radar 
   var colNames = Object.keys(baseArray[1]);
   // remove countries names and so on
@@ -893,7 +927,7 @@ function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear
     // define array per country row
     var v = 0;
     for (var k = 0; k < baseArray.length; k++) {
-      if (countryTemp[j]["code"] === baseArray[k]["Country Code"]) {
+      if (countryTemp[j]["code"] === baseArray[k]["Country Code"] || countryTemp[j]["country"] === baseArray[k]["Country Name"]) {
         // radar value copy
         v = baseArray[k][givenYear];
         // stacked value copy for all years = colNames.length - 1 (minus due to country name inside)
@@ -902,6 +936,18 @@ function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear
           // put to column with header a value  
           var tempVal = baseArray[k][colNames[l]];
           if (tempVal == "" || isNaN(tempVal)) { tempVal = parseFloat(0); } else { tempVal = parseFloat(tempVal) }
+          // if value is co2 per citizen or area -> need to find for those countries co2 value to divide through
+          if (name == "g2ST" || name == "g3ST") {
+            for (var m = 1; m < dividerSet.length; m++) {  
+              if (dividerSet[m]["Country Name"] == countryTemp[j]["country"]) {
+                var baseCO = dividerSet[m][colNames[l]];
+                if (baseCO == "" || isNaN(baseCO) || tempVal==0){tempVal = 0;}else{
+                  tempVal = baseCO / tempVal * 1000; 
+                  if(name == "g2ST"){tempVal = tempVal*1000000;}
+                }
+                  }
+            } 
+          }
           countryTempStackedRow.push(tempVal.toFixed(3));
         }
         // stacked thingy
@@ -919,13 +965,14 @@ function generateFinalArray(countryTemp, baseArray, nameStacked, name, givenYear
   localStorage.setItem(nameStacked, JSON.stringify(countryTempStacked));
 
   let prog = JSON.parse(localStorage.getItem("prog"));
-  if(prog == 0){prog=1;}
-  var progBar = Math.round(100-(100/prog));
-  $("#valueProgress").text(progBar+"%"); 
-  console.log(progBar+"%"); 
-  if (parseInt(prog) > 8) {
+  if (isNaN(prog)) { prog = 99; }
+  if (prog == 0 && !isNaN(prog)) { prog = 1; }
+  var progBar = Math.round(100 - (99 / prog));
+  $("#valueProgress").text(progBar + "%");
+  console.log(progBar + "%");
+  if (parseInt(prog) > 10) {
     $("div#processingProgress").addClass("d-none");
     localStorage.removeItem('prog');
-    $("#valueProgress").text("0%"); 
+    $("#valueProgress").text("0%");
   }
 }

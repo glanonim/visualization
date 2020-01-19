@@ -36,9 +36,8 @@
         data-target="#helpModal">
         Beginners' guide
       </button>
-      <h1 class="mt-5">How have global CO<sub>2</sub> emissions changed over time?</h1>
-      <p class="lead">The visualisation presents the long-run perspective on global CO2 emissions. Play with year and
-        display style to see how CO2 emission progressed over recent years. Select country to see more details...
+      <h1 class="mt-5">How the global CO<sub>2</sub> Emissions changed over time?</h1>
+      <p class="lead">Have you ever wondered where and what is the most significant contributor to climate change? Without knowing the history, you will not know how to fight in the future. Analyze carbon emissions change and investigate trends anywhere in the world with just a few clicks. From now on, you are a member of a global watcher!
       </p>
 
     </main>
@@ -55,20 +54,22 @@
       <div class="tab-pane fade show active" id="nav-map" role="tabpanel" aria-labelledby="nav-map-tab">
         <!-- Start of map -->
         <div class="position-relative border mt-3 px-0">
+          <button type="button" id="showSidePanel" class="btn btn-sm btn-primary position-absolute mt-3 ml-3"
+            title="Show side panel" data-toggle="tooltip"><i class="material-icons ic-sm pt-1">chevron_right</i></button>
 
           <!-- Show side panel -->
-          <button type="button" id="showSidePanel" class="btn btn-sm btn-primary position-absolute mt-3 ml-3"
-            title="Show side panel" data-toggle="tooltip"><i class="material-icons pt-1">chevron_right</i></button>
           <div class="col-10 col-md-5 col-xl-3 bg-light position-absolute overflow-auto" id="countriesSelect">
             <div class="row my-3">
               <div class="col">
-                <h5 class="">Pick countries to display details</h5>
+                <h6 class="">Select 5-8 countries</h6>
                 <p class="mb-0">Displayed unit:<span class="badge badge-pill badge-dark ml-2" id="updateUnit">...</span>
                 </p>
               </div>
-              <div class="col-3">
-                <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary" title="Hide this panel"
-                  data-toggle="tooltip"><i class="material-icons pt-1">chevron_left</i></button>
+              <div class="col-3 text-right">
+                <button type="button" class="btn btn-sm btn-primary mb-1 disabled processData"
+                  title="Process data for selected countries" data-toggle="tooltip"><i class="material-icons  ic-sm pt-1">
+                    timeline
+                    </i></button>
 
               </div>
             </div>
@@ -83,15 +84,19 @@
               </div>
             </div>
           </div>
+          
 
           <!-- Generate map -->
           <div class="chart" id="globeChart">
           </div>
+          <!--Button to hide -->
+        <button type="button" id="hideSidePanel" class="btn btn-sm btn-primary position-absolute " title="Hide left panel"
+        data-toggle="tooltip"><i class="material-icons ic-sm pt-1">chevron_left</i></button>
 
           <!-- Button to reset countries -->
           <button type="button" class="btn btn-sm btn-light position-absolute border" id="resetCountries"
             title="Reset picked countries" data-toggle="tooltip"><i
-              class="material-icons ic-sm pt-1 ic-sm">cached</i></button>
+              class="material-icons ic-sm pt-1">cached</i></button>
         </div>
         <div class="row mt-1 py-3">
           <div class="col">
@@ -163,7 +168,7 @@
               <!-- Play years animation -->
               <div class="col text-right">
                 <label for="yearSelect" class="btn btn-sm btn-outline-primary mb-1">Year: </label>
-                <button type="button" class="btn btn-sm btn-primary mb-1 disabled" id="processData"
+                <button type="button" class="btn btn-sm btn-primary mb-1 disabled processData"
                   title="Process data for selected countries" data-toggle="tooltip">Process</button>
               </div>
               <!-- Pick year -->
@@ -199,9 +204,8 @@
           </div>
           <div class="row my-3">
             <div class="col my-3">
-              <h1 class="mt-4" id="yearUpdate">Details</h1>
-              <p class="lead">Which is the largest contributor to carbon dioxide emissions? You can check the details of
-                each country by sector.</p>
+              <h1 class="mt-4" id="yearUpdate">Cross country comparisons</h1>
+              <p class="lead">Where Do Greenhouse Gases Come From? Which is the largest contributor to carbon dioxide emissions? You can check the details of each country by sector.</p>
               <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#ModalExp">
                 <i class="material-icons mt-1">contact_support</i>
               </button>
@@ -228,18 +232,13 @@
                 <div class="tab-pane fade show active" role="tabpanel" id="noSelection"
                   aria-labelledby="cat-noSelection-tab">
                   <div class="my-5 text-center ">
-                    <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
-                    <p class="lead mb-5">Select countries and select category from left menu to see radar charts</p>
+                    <i class="material-icons h1 mb-3">keyboard_backspace</i>
+                    <p class="lead mb-5">Let's Explore! The generation of carbon emissions is mainly influenced by the following sectors - Transportation, Electricity and heat production, Manufacturing Industrie Residential and etc. Let's compare in more detail by country by industry. Please choose 5 to 8 countries from above and select category to generate radar charts.</p>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="cat-transport" role="tabpanel" aria-labelledby="cat-transport-tab">
                   <h3>CO<sub>2</sub> emissions from transport (% of total fuel combustion) </h3>
-                  <p class="lead">CO<sub>2</sub> emissions from transport contains emissions from the combustion of fuel
-                    for all
-                    transport activity, regardless of the sector, except for international marine bunkers and
-                    international aviation. This includes domestic aviation, domestic navigation, road, rail and
-                    pipeline
-                    transport, and corresponds to IPCC Source/Sink Category 1 A 3.</p>
+                  <p class="lead">How much Carbon Emissions is released by transportation? This data includes a grouping in domestic aviation, road transportation, rail transportation, domestic navigation, and other transportation. </p>
                   <div class="radar" id="radartA">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -252,8 +251,7 @@
 
 
                   <h3 class="mt-5">Air passengers per country</h3 class="mb-5">
-                  <p class="lead">The air transport data represent the total (international and domestic) scheduled
-                    traffic carried by the air carriers registered in a country</p>
+                  <p class="lead">You may live a sustainable lifestyle at home, but what about while on vacation? Compare which countries travel a lot and gain insight into becoming more a green traveler.</p>
                   <div class="radar" id="radartB">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -266,9 +264,7 @@
                 </div>
                 <div class="tab-pane fade" id="cat-energy" role="tabpanel" aria-labelledby="cat-energy-tab">
                   <h3>Energy use (kg of oil equivalent per capita)</h3>
-                  <p class="lead">Energy use refers to use of primary energy before transformation to other end-use
-                    fuels, which is equal to indigenous production plus imports and stock changes, minus exports and
-                    fuels supplied to ships and aircraft engaged in international transport.</p>
+                  <p class="lead">When fossil fuels are burned, oxygen combines with carbon to form CO<sub>2</sub> and with hydrogen to form water (H<sub>2</sub>O). These reactions release heat, which we use for energy. The amount of CO<sub>2</sub> produced depends on the carbon content of the fuel. For this reason, why not pay more attention to energy use?</p>
                   <div class="radar" id="radareA">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -279,7 +275,7 @@
                       Source: IEA Statistics © OECD/IEA 2014</small></a>
 
                   <h3 class="mt-5">Electricity production from oil, gas and coal sources (% of total)</h3 class="mt-5">
-                  <p class="lead">Sources of electricity refer to the inputs used to generate electricity.</p>
+                  <p class="lead">Electricity is essential for industry, buildings, and all aspects of daily life. But it has to be generated from a primary energy source. Here is about electricity production from oil, gas, and coal sources. The methods make it the main source of global CO<sub>2</sub> emissions. For this reason, the choice of generation technology will play a decisive role in reducing electricity's environmental footprint, especially considering that coal, at one end of the spectrum, has a carbon impact 20 times greater than renewables, at the other. </p>
                   <div class="radar" id="radareB">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -292,24 +288,7 @@
 
                   <h3 class="mt-5">CO<sub>2</sub> emissions from electricity and heat production, total (% of total fuel
                     combustion)</h3>
-                  <p class="lead">CO<sub>2</sub> emissions from electricity and heat production is the sum of three IEA
-                    categories
-                    of CO2 emissions:
-                    (1) Main Activity Producer Electricity and Heat which contains the sum of emissions from main
-                    activity producer electricity generation, combined heat and power generation and heat plants. Main
-                    activity producers (formerly known as public utilities) are defined as those undertakings whose
-                    primary activity is to supply the public. They may be publicly or privately owned. This corresponds
-                    to IPCC Source/Sink Category 1 A 1 a. For the CO<sub>2</sub> emissions from fuel combustion
-                    (summary) file,
-                    emissions from own on-site use of fuel in power plants (EPOWERPLT) are also included.
-                    (2) Unallocated Autoproducers which contains the emissions from the generation of electricity and/or
-                    heat by autoproducers. Autoproducers are defined as undertakings that generate electricity and/or
-                    heat, wholly or partly for their own use as an activity which supports their primary activity. They
-                    may be privately or publicly owned. In the 1996 IPCC Guidelines, these emissions would normally be
-                    distributed between industry, transport and "other" sectors.
-                    (3) Other Energy Industries contains emissions from fuel combusted in petroleum refineries, for the
-                    manufacture of solid fuels, coal mining, oil and gas extraction and other energy-producing
-                    industries. </p>
+                  <p class="lead">Here you can compare the amount of CO<sub>2</sub> produced directly from electricity production and heat production by country in more detail.</p>
                   <div class="radar" id="radareC">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -324,8 +303,7 @@
 
                   <h3 class="">CO<sub>2</sub> emissions from manufacturing industries and construction (% of total fuel
                     combustion)</h3>
-                  <p class="lead">CO<sub>2</sub> emissions from manufacturing industries and construction contains the
-                    emissions from combustion of fuels in industry. </p>
+                  <p class="lead">The most important source of greenhouse gas emissions has been and still is the combustion of fossil energy sources. Energy is used mainly in the production of goods. This explains the critical role the manufacturing sector plays in resolving the climate issue. Construction is responsible for 11% of global carbon emissions, according to a report from C40, a group of leading metropolitan authorities. </p>
                   <div class="radar" id="radariA">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -337,8 +315,7 @@
 
                   <h3 class="mt-5">CO<sub>2</sub> emissions from residential buildings and commercial and public
                     services (% of total fuel combustion)</h3>
-                  <p class="lead">CO<sub>2</sub> emissions from residential buildings and commercial and public services
-                    contains all emissions from fuel combustion in households. </p>
+                  <p class="lead">The data below shows how carbon emissions from residential buildings and commercial and public services (% of total fuel combustion) varies by country.  </p>
                   <div class="radar" id="radariB">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -356,8 +333,7 @@
                 <div class="tab-pane fade" id="cat-land" role="tabpanel" aria-labelledby="cat-land-tab">
 
                   <h3 class="">Agricultural methane emissions (thousand metric tons of CO<sub>2</sub> equivalent)</h3>
-                  <p class="lead">Agricultural methane emissions are emissions from animals, animal waste, rice
-                    production, agricultural waste burning (nonenergy, on-site), and savannah burning. </p>
+                  <p class="lead">There has recently been a lot of focus on methane, as it is an important contributor to climate change. The food system is one of the largest emitters of methane, and the gas is particularly associated with ruminant livestock (cattle, sheep, and goats) and with rice production.</p>
                   <div class="radar" id="radarlA">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -370,9 +346,7 @@
                       edgar.jrc.ec.europa.eu</small></a>
 
                   <h3 class="mt-5">Forest area (% of land area)</h3>
-                  <p class="lead">Forest area is land under natural or planted stands of trees of at least 5 meters in
-                    situ, whether productive or not, and excludes tree stands in agricultural production systems (for
-                    example, in fruit plantations and agroforestry systems) and trees in urban parks and gardens. </p>
+                  <p class="lead">Trees can reduce the overall temperature by up to eight degrees Celsius by sucking in and storing harmful carbon dioxide emissions. Check and think about your action make your place a healthier, safer place to live.</p>
                   <div class="radar" id="radarlB">
                     <div class="mt-5 pt-5 text-center placeholder radarPlaceholder">
                       <i class="material-icons h1 mt-4 mb-3">playlist_add</i>
@@ -403,8 +377,22 @@
           </div>
           <div class="w-100"></div>
           <div class="row">
-            <div class="col-6">
+            <div class="col-4">
               <!-- Display countries to pick -->
+              <h5 class="mt-3">General</h5>
+              <ul class="list-group mb-3 stackedStarter">
+                <li class="list-group-item list-group-item-action" data-chart="g1">
+                  CO<sub>2</sub> emission in mton per country
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="g3">
+                  CO<sub>2</sub> emission in ton per citizen
+                </li>
+                <li class="list-group-item list-group-item-action" data-chart="g2">
+                  CO<sub>2</sub> emission in mton per km<sup>2</sup>
+                </li>
+              </ul>
+            </div>
+              <div class="col-4">
               <h5 class="mt-3">Transportation</h5>
               <ul class="list-group mb-3 stackedStarter">
                 <li class="list-group-item list-group-item-action" data-chart="t1">
@@ -428,7 +416,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-6">
+            <div class="col-4">
               <h5 class="mt-3">Industry & Residence</h5>
               <ul class="list-group mb-3 stackedStarter">
                 <li class="list-group-item list-group-item-action" data-chart="i1">
@@ -586,28 +574,29 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <h5>Global greenhouse gas emissions are broken down by sectoral sources in the sections which follow:</h5>
-          <p><b>Transport:</b> domestic aviation, road transportation, rail transportation, domestic navigation, other
-            transportation.</p>
-          <p><b>Energy (energy, manufacturing and construction industries and fugitive emissions):</b> emissions are
-            inclusive of public heat and electricity production; other energy industries; fugitive emissions from
-            solid
-            fuels, oil and gas, manufacturing industries and construction.</p>
-          <p><b>International bunkers:</b> international aviation; international navigation/shipping.</p>
-          <p><b>Residential, commercial, institutional and AFF:</b> Residential and other sectors.</p>
-          <p><b>Industry (industrial processes and product use):</b> production of minerals, chemicals, metals,
-            pulp/paper/food/drink, halocarbons, refrigeration and air conditioning; aerosols and solvents;
-            semicondutor/electronics manufacture; electrical equipment.</p>
-          <p><b>Waste:</b> solid waste disposal; wastewater handling; waste incineration; other waste handling.</p>
-          <p><b>Land use:</b> emissions from the net conversion of forest; cropland; grassland and burning biomass for
-            agriculture and other uses, including Argiculture category :methane and nitrous oxide emissions from
-            enteric
-            fermentation; manure management; rice cultivation; synthetic fertilizers; manure applied to soils; manure
-            left on pasture; crop residues; burning crop residues, savanna and cultivation of organic soils.</p>
-          <p><b>Other sources:</b> fossil fuel fires; indirect nitrous oxide from non-agricultural NOx and ammonia;
-            other anthropogenic sources.</p>
-          <small>Sources: IEA Statistics &copy; OECD/IEA 2014 (http://www.iea.org/stats/index.asp), subject to
+        <div class="modal-body"> 
+          <p>Global greenhouse gas emissions are broken down by sectoral sources in the sections which follow:</p>
+
+            <h5>Parts covered on this page</h5>
+            
+            <p><b>Transport:</b>  domestic aviation, road transportation, rail transportation, domestic navigation, other transportation.</p>
+            
+              <p><b>Energy (energy, manufacturing and construction industries and fugitive emissions):</b>  emissions are inclusive of public heat and electricity production; other energy industries; fugitive emissions from solid fuels, oil and gas, manufacturing industries and construction.</p>
+            
+                <p><b>Residential, commercial, institutional and AFF:</b>  Residential and other sectors.</p>
+            
+                  <p><b>Industry (industrial processes and product use):</b>  production of minerals, chemicals, metals, pulp/paper/food/drink, halocarbons, refrigeration and air conditioning; aerosols and solvents; semicondutor/electronics manufacture; electrical equipment.</p>
+            
+                    <p><b>Land use:</b>  emissions from the net conversion of forest; cropland; grassland and burning biomass for agriculture and other uses, including Argiculture category :methane and nitrous oxide emissions from enteric fermentation; manure management; rice cultivation; synthetic fertilizers; manure applied to soils; manure left on pasture; crop residues; burning crop residues, savanna and cultivation of organic soils.</p>
+            
+            <h5 class="mt-4">Parts not covered this page</h5>
+            
+            <p><b>International bunkers:</b>  international aviation; international navigation/shipping.</p>
+            
+              <p><b>Waste:</b>  solid waste disposal; wastewater handling; waste incineration; other waste handling.</p>
+            
+                <p><b>Other sources:</b> fossil fuel fires; indirect nitrous oxide from non-agricultural NOx and ammonia; other anthropogenic sources.</p>
+          <small class="text-muted lowH">Sources: IEA Statistics &copy; OECD/IEA 2014 (http://www.iea.org/stats/index.asp), subject to
             https://www.iea.org/t&c/termsandconditions/</small>
         </div>
         <div class="modal-footer">

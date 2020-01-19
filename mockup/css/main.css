@@ -215,6 +215,10 @@
     small {
       font-size: 60%
     }
+    #hideSidePanel{top:0.5em;right:3.75em;}
     #resetCountries{top:0.5em;right:0.5em;}
 
     #processingProgress{width:100%;height:100%;background:rgba(0, 0, 0, 0.7);position:fixed;z-index:1099}
+    ul.stackedStarter li{cursor:pointer}
+
+    .lowH{line-height:0.8 !important;}

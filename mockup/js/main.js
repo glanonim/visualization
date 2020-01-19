@@ -15,7 +15,7 @@
     $("#yearSelect").change(function () {
       year = $(this).val();
       $("label[for='yearSelect']").text("Year: " + year);
-      $("h1#yearUpdate").text("Details for " + year);
+      $("h1#yearUpdate").text("Cross country comparisons in " + year);
     });
     // show and hide side panel to select country
     $("#hideSidePanel").click(function () {
