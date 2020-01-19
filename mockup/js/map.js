@@ -603,27 +603,20 @@ function processData(givenYear) {
     Papa.parse(file_t3, {
       download: true,
       header: true,
-      complete: function (results) {
-        prog = parseInt(JSON.parse(localStorage.getItem("prog")));
-        prog++;
+      complete: function (results) { 
         localStorage.setItem("prog", JSON.stringify(prog));
         generateFinalArray(countryTemp, results.data, "t2s", "t2", givenYear);
-      }
-    });
-    Papa.parse(file_g1, {
-      download: true,
-      header: true,
-      complete: function (results) {
-        generateFinalArray(countryTemp, results.data, "g1s", "g1", givenYear);
+        g1ST = JSON.parse(localStorage.getItem("g1"));
+        generateFinalArray(countryTemp, g1ST, "g1STs", "g1ST", givenYear);
         g2ST = JSON.parse(localStorage.getItem("g2"));
         generateFinalArray(countryTemp, g2ST, "g2STs", "g2ST", givenYear, results.data);
         g3ST = JSON.parse(localStorage.getItem("g3"));
         generateFinalArray(countryTemp, g3ST, "g3STs", "g3ST", givenYear, results.data);
         prog = parseInt(JSON.parse(localStorage.getItem("prog")));
-        prog = prog + 3;
+        prog = prog + 4;
         localStorage.setItem("prog", JSON.stringify(prog));
       }
-    });
+    }); 
 
   } else {
     // else clean charts
