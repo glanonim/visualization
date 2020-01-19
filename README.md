@@ -262,7 +262,7 @@ Link: https://data.worldbank.org/indicator/EN.CO2.ETOT.ZS
 10) CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
 Link: https://data.worldbank.org/indicator/EN.CO2.MANF.ZS
-11) CO2 emissions from manufacturing industries and construction (% of total fuel combustion)
+11) CO2 emissions from residential buildings and commercial and public services (% of total fuel combustion)
 Source: IEA Statistics © OECD/IEA 2014
 Link: https://data.worldbank.org/indicator/EN.CO2.BLDG.ZS
 
