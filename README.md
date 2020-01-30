@@ -211,7 +211,7 @@ Waste:
 5. GitHub draft - Franziska - January
 6. Overleaf document - Franziska - January
 - Kris please add Data manipulation and Implementation details
-- Kyung Hee please add Data informations
+- Kyung Hee please add Data informations, sources, report writing (process)
 7. Poster - for now All - January
   - Screenshots 
   - Explain each part (Navigation Interaction)
